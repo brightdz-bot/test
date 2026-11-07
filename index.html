@@ -387,9 +387,9 @@
                     <div>
                         <label class="block text-xs font-bold text-gray-700 mb-2">العرض المختار:</label>
                         <select id="bundle-select" onchange="updateBundleFromSelect()" class="w-full p-3.5 rounded-xl border-2 border-wood-200 focus:border-wood-600 focus:outline-none bg-white font-bold text-sm text-wood-900">
-                            <option value="pack1">قطعة واحدة - 1,400 دج</option>
-                            <option value="pack2" selected>قطعتين (2) + توصيل مجاني - 2,300 دج (الأكثر طلباً)</option>
-                            <option value="pack4">4 قطعات (4) + توصيل مجاني - 3,800 دج</option>
+                            <option value="pack1">العرض العادي: قطعة واحدة - 1,400 دج</option>
+                            <option value="pack2" selected>عرض القطعتين (باك المطبخ والحمام): قطعتين - 2,300 دج (الأكثر طلباً + توصيل مجاني)</option>
+                            <option value="pack4">العرض العائلي الفاخر: 4 قطع - 3,800 دج (+ توصيل مجاني)</option>
                         </select>
                     </div>
 
@@ -634,7 +634,7 @@
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxypWDAiVUVZkLcm_DbGvsosIKpdWvcbQ5LwdxkoYbcIJzehubIrc00_WlhjY3-bkpq/exec';
 
         let currentPrice = 2300;
-        let currentBundleName = 'قطعتين (2) - عرض المطبخ والحمام';
+        let currentBundleName = 'عرض القطعتين (باك المطبخ والحمام)';
 
         function changeImg(src) {
             document.getElementById('main-product-img').src = src;
@@ -679,13 +679,13 @@
         function updateBundleDetails(packId, price) {
             currentPrice = price;
             if (packId === 'pack1') {
-                currentBundleName = 'قطعة واحدة (1)';
+                currentBundleName = 'العرض العادي (قطعة واحدة)';
                 updateSummary(price, false);
             } else if (packId === 'pack2') {
-                currentBundleName = 'قطعتين (2) + توصيل مجاني';
+                currentBundleName = 'عرض القطعتين (باك المطبخ والحمام)';
                 updateSummary(price, true);
             } else if (packId === 'pack4') {
-                currentBundleName = '4 قطعات (4) + توصيل مجاني';
+                currentBundleName = 'العرض العائلي الفاخر (4 قطع)';
                 updateSummary(price, true);
             }
         }
@@ -704,10 +704,10 @@
                 if (totalEl) totalEl.innerText = price.toLocaleString() + ' دج';
             } else {
                 if (shippingEl) {
-                    shippingEl.innerText = '400 دج';
+                    shippingEl.innerText = 'حسب الولاية 🚛';
                     shippingEl.className = 'font-bold text-gray-800';
                 }
-                if (totalEl) totalEl.innerText = (price + 400).toLocaleString() + ' دج';
+                if (totalEl) totalEl.innerText = (price + ' دج + التوصيل');
             }
         }
 
