@@ -829,6 +829,24 @@
                 });
             }
         }
+        // دالة فحص الحالة المحسنة لتجاوز قيود المتصفح
+        function checkOrderStatus(orderId) {
+            if (!GOOGLE_SCRIPT_URL) return;
+
+            // استخدام طريقة الـ JSONP لضمان قراءة الحالة من جوجل شيت بنجاح
+            const callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
+            window[callbackName] = function(data) {
+                delete window[callbackName];
+                document.body.removeChild(scriptTag);
+                if (data && data.status) {
+                    updateTimelineUI(data.status);
+                }
+            };
+
+            const scriptTag = document.createElement('script');
+            scriptTag.src = `${GOOGLE_SCRIPT_URL}?orderId=${orderId}&callback=${callbackName}`;
+            document.body.appendChild(scriptTag);
+        }
     </script>
 </body>
 </html>
