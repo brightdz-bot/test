@@ -61,6 +61,7 @@
                             900: '#432818',
                         },
                         brandRed: '#e63946',
+                        whatsapp: '#25D366',
                     },
                     fontFamily: {
                         sans: ['Tajawal', 'sans-serif'],
@@ -110,10 +111,16 @@
                     <span class="text-[10px] text-gray-500 font-semibold">متجر الجودة والديكور العصري</span>
                 </div>
             </div>
-            <a href="#order-form" class="bg-wood-800 hover:bg-wood-900 text-white px-4 py-2 rounded-lg font-bold text-sm transition-all shadow-md flex items-center gap-2">
-                <i class="fa-solid fa-cart-shopping text-xs"></i>
-                <span>أطلب الآن</span>
-            </a>
+            <div class="flex items-center gap-2">
+                <a href="#track-search-section" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-2 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5">
+                    <i class="fa-solid fa-magnifying-glass text-wood-700"></i>
+                    <span class="hidden sm:inline">تتبع طلبك</span>
+                </a>
+                <a href="#order-form" class="bg-wood-800 hover:bg-wood-900 text-white px-4 py-2 rounded-lg font-bold text-sm transition-all shadow-md flex items-center gap-2">
+                    <i class="fa-solid fa-cart-shopping text-xs"></i>
+                    <span>أطلب الآن</span>
+                </a>
+            </div>
         </div>
     </header>
 
@@ -216,164 +223,24 @@
         </div>
     </section>
 
-    <!-- Why Choose This Product -->
-    <section class="py-12 bg-white border-y border-wood-100">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center max-w-2xl mx-auto mb-10">
-                <span class="text-wood-600 font-bold text-sm tracking-wider uppercase">ابتكار وبساطة</span>
-                <h2 class="text-2xl sm:text-3xl font-bold text-wood-900 mt-1">لماذا ستحب هذا المشبك الخشبي؟</h2>
-                <p class="text-gray-500 text-sm mt-2">تصميم متقن يجمع بين المظهر الدافئ للذوق الفاخر والعملية اليومية</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="p-6 rounded-2xl bg-wood-50 border border-wood-100 text-center space-y-4 hover:shadow-md transition">
-                    <div class="w-16 h-16 mx-auto rounded-2xl wood-gradient flex items-center justify-center text-white text-2xl shadow-md">
-                        <i class="fa-solid fa-arrows-down-to-line"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-wood-900">آلية قفل الجاذبية الذكية</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        بفضل الكرة الخشبية المتحركة بالداخل، كل ما عليك هو إدخال طرف المنشفة من الأسفل لتقفل عليها الكرة تلقائياً دون أن تسقط أبداً.
-                    </p>
-                </div>
-
-                <div class="p-6 rounded-2xl bg-wood-50 border border-wood-100 text-center space-y-4 hover:shadow-md transition">
-                    <div class="w-16 h-16 mx-auto rounded-2xl wood-gradient flex items-center justify-center text-white text-2xl shadow-md">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-wood-900">بدون ثقب السيراميك</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        مزود بلاصق مزدوج شديد التحمل ومقاوم للماء، مما يتيح لك تثبيته خلال 5 ثوانٍ فقط على الزجاج، السيراميك، أو الخشب دون تشويه الجدران.
-                    </p>
-                </div>
-
-                <div class="p-6 rounded-2xl bg-wood-50 border border-wood-100 text-center space-y-4 hover:shadow-md transition">
-                    <div class="w-16 h-16 mx-auto rounded-2xl wood-gradient flex items-center justify-center text-white text-2xl shadow-md">
-                        <i class="fa-solid fa-gem"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-wood-900">خشب مصقول يدويًا</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        تمت معالجته بطبقة زيتها لحمايته من البخار والرطوبة العالية في الحمام، مع ملمس ناعم جداً يحافظ على مناشفك من التمزق.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Packs & Bundles -->
-    <section class="py-12 bg-wood-50">
-        <div class="max-w-5xl mx-auto px-4">
-            <div class="text-center max-w-xl mx-auto mb-10">
-                <span class="bg-wood-200 text-wood-800 text-xs font-bold px-3 py-1 rounded-full">عروض خاصة</span>
-                <h2 class="text-2xl sm:text-3xl font-bold text-wood-900 mt-2">اختر العرض المناسب لك</h2>
-                <p class="text-gray-600 text-sm">احصل على خصومات إضافية عند طلب أكثر من قطعة</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-                
-                <!-- Pack 1 -->
-                <div onclick="selectPack('pack1', 1400)" id="card-pack1" class="pack-card bg-white rounded-2xl p-6 border-2 border-gray-200 shadow-sm relative flex flex-col justify-between cursor-pointer hover:border-wood-500 transition">
-                    <div>
-                        <div class="text-center pb-4 border-b border-gray-100">
-                            <h3 class="text-lg font-bold text-gray-800">العرض العادي</h3>
-                            <p class="text-xs text-gray-500 mt-1">قطعة واحدة (1)</p>
-                            <div class="mt-4">
-                                <span class="text-3xl font-black text-wood-900">1,400 دج</span>
-                                <div style="height: 35px;"></div>
-                            </div>
-                        </div>
-                        <ul class="py-4 space-y-2.5 text-xs text-gray-600">
-                            <li class="flex items-center gap-2">
-                                <i class="fa-solid fa-check text-green-600"></i>
-                                <span>1x حامل مناشف خشبي</span>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <i class="fa-solid fa-check text-green-600"></i>
-                                <span>شريط لاصق متين مرفق</span>
-                            </li>
-                            <li class="flex items-center gap-2 text-gray-500">
-                                <i class="fa-solid fa-truck text-gray-500"></i>
-                                <span>التوصيل حسب الولاية (مدفوع)</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <button type="button" class="w-full py-2.5 rounded-xl border-2 border-wood-800 text-wood-800 font-bold text-sm hover:bg-wood-800 hover:text-white transition">اختيار العرض</button>
-                </div>
-
-                <!-- Pack 2 (Best Value) -->
-                <div onclick="selectPack('pack2', 2300)" id="card-pack2" class="pack-card bg-white rounded-2xl p-6 border-2 border-wood-500 shadow-xl relative flex flex-col justify-between cursor-pointer transform md:-translate-y-2">
-                    <div>
-                        <div class="text-center pb-4 border-b border-gray-100">
-                            <h3 class="text-lg font-bold text-wood-900">عرض القطعتين (باك المطبخ والحمام)</h3>
-                            <p class="text-xs text-wood-600 font-semibold mt-1">قطعتين (2)</p>
-                            <div class="mt-4">
-                                <span class="text-3xl font-black text-wood-900">2,300 دج</span>
-                                <span class="text-xs text-red-500 line-through block">2,800 دج</span>
-                            </div>
-                        </div>
-                        <ul class="py-4 space-y-2.5 text-xs text-gray-700">
-                            <li class="flex items-center gap-2 font-bold text-wood-900">
-                                <i class="fa-solid fa-check text-wood-600"></i>
-                                <span>2x حامل مناشف خشبي</span>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <i class="fa-solid fa-check text-wood-600"></i>
-                                <span>شريط لاصق متين مرفق</span>
-                            </li>
-                            <li class="flex items-center gap-2 text-gray-500">
-                                <i class="fa-solid fa-truck text-gray-500"></i>
-                                <span>التوصيل حسب الولاية (مدفوع)</span>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <i class="fa-solid fa-check text-wood-600"></i>
-                                <span>توفير بقيمة 500 دج</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <button type="button" class="w-full py-3 rounded-xl bg-wood-800 text-white font-bold text-sm shadow-md hover:bg-wood-900 transition">اختيار هذا العرض</button>
-                </div>
-
-                <!-- Pack 4 (Family Pack) -->
-                <div onclick="selectPack('pack4', 3800)" id="card-pack4" class="pack-card bg-white rounded-2xl p-6 border-2 border-gray-200 shadow-sm relative flex flex-col justify-between cursor-pointer hover:border-wood-500 transition">
-                    <div>
-                        <div class="text-center pb-4 border-b border-gray-100">
-                            <h3 class="text-lg font-bold text-gray-800">العرض العائلي الفاخر</h3>
-                            <p class="text-xs text-gray-500 mt-1">4 قطع (4)</p>
-                            <div class="mt-4">
-                                <span class="text-3xl font-black text-wood-900">3,800 دج</span>
-                                <span class="text-xs text-red-500 line-through block">5,600 دج</span>
-                                <div style="height: 20px;"></div>
-                            </div>
-                        </div>
-                        <ul class="py-4 space-y-2.5 text-xs text-gray-600">
-                            <li class="flex items-center gap-2 font-bold">
-                                <i class="fa-solid fa-check text-green-600"></i>
-                                <span>4x حامل مناشف خشبي</span>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <i class="fa-solid fa-check text-green-600"></i>
-                                <span>شريط لاصق متين مرفق</span>
-                            </li>
-                            <li class="flex items-center gap-2 text-gray-500">
-                                <i class="fa-solid fa-truck text-gray-500"></i>
-                                <span>التوصيل حسب الولاية (مدفوع)</span>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <i class="fa-solid fa-check text-green-600"></i>
-                                <span>أكبر نسبة توفير (خصم 1800 دج)</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <button type="button" class="w-full py-2.5 rounded-xl border-2 border-wood-800 text-wood-800 font-bold text-sm hover:bg-wood-800 hover:text-white transition">اختيار العرض</button>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Order Form Section -->
+    <!-- Order Form Section & Tracking Section -->
     <section id="order-form" class="py-12 bg-white">
         <div class="max-w-3xl mx-auto px-4">
             
+            <!-- أداة البحث عن الطلب برقم الطلب (Order Search Widget) -->
+            <div id="track-search-section" class="mb-10 bg-wood-50 rounded-2xl p-6 border border-wood-200 shadow-sm text-center space-y-4">
+                <div class="flex items-center justify-center gap-2 text-wood-900 font-bold">
+                    <i class="fa-solid fa-magnifying-glass text-wood-700"></i>
+                    <span>هل لديك طلب سابق وتريد تتبعه؟</span>
+                </div>
+                <div class="flex gap-2 max-w-md mx-auto">
+                    <input type="text" id="search-order-input" placeholder="أدخل رقم طلبك هنا (مثال: ORD-123456)" class="w-full p-3 rounded-xl border border-gray-300 focus:border-wood-600 focus:outline-none text-sm text-center font-bold">
+                    <button onclick="searchExistingOrder()" class="bg-wood-800 hover:bg-wood-900 text-white px-5 py-3 rounded-xl font-bold text-sm shrink-0 transition">
+                        بحث
+                    </button>
+                </div>
+            </div>
+
             <!-- نموذج الطلب الأصلي -->
             <div id="form-container" class="bg-wood-50 rounded-3xl p-6 sm:p-8 border-2 border-wood-200 shadow-xl">
                 <div class="text-center mb-8">
@@ -445,7 +312,7 @@
                 </form>
             </div>
 
-            <!-- قسم تتبع الطلب (يظهر بعد الضغط على موافق) -->
+            <!-- قسم تتبع الطلب (يظهر بعد الضغط على موافق أو بعد البحث برقم الطلب) -->
             <div id="tracking-container" class="hidden bg-white rounded-3xl p-6 sm:p-8 border-2 border-wood-200 shadow-xl space-y-6">
                 <div class="text-center space-y-2 border-b pb-6">
                     <div class="w-14 h-14 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto text-2xl">
@@ -463,7 +330,7 @@
                     </div>
                     <div class="flex justify-between border-b pb-2">
                         <span class="text-gray-500">المنتج / العرض:</span>
-                        <span id="track-order-name" class="font-bold text-gray-800">--</span>
+                        <span id="track-order-name" class="font-bold text-wood-800">--</span>
                     </div>
                     <div class="flex justify-between">
                         <span class="text-gray-500">المبلغ الإجمالي:</span>
@@ -520,82 +387,21 @@
                     </div>
                 </div>
 
-                <div class="pt-4">
-                    <button onclick="location.reload()" class="w-full py-3 bg-wood-800 text-white font-bold rounded-xl hover:bg-wood-900 transition text-sm">
-                        إجراء طلب جديد
+                <!-- زر متابعة عبر واتساب -->
+                <div class="pt-2">
+                    <a id="whatsapp-track-btn" href="#" target="_blank" class="w-full py-3 bg-whatsapp hover:bg-emerald-600 text-white font-bold rounded-xl transition flex items-center justify-center gap-2 text-sm shadow-md">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>تواصل معنا عبر واتساب لمتابعة الطلب</span>
+                    </a>
+                </div>
+
+                <div class="pt-2">
+                    <button onclick="location.reload()" class="w-full py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-xl transition text-sm">
+                        إجراء طلب جديد أو بحث آخر
                     </button>
                 </div>
             </div>
 
-        </div>
-    </section>
-
-    <!-- Reviews Section -->
-    <section class="py-12 bg-wood-50 border-t border-wood-100">
-        <div class="max-w-5xl mx-auto px-4">
-            <div class="text-center mb-8">
-                <h2 class="text-2xl font-bold text-wood-900">آراء زبائننا الكرام</h2>
-                <p class="text-xs text-gray-500 mt-1">تجربة زبائننا مع حامل المناشف الخشبي من Bright DZ</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Review 1 -->
-                <div class="bg-white p-5 rounded-2xl shadow-sm border border-wood-100 space-y-3">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-2">
-                            <div class="w-8 h-8 rounded-full bg-wood-200 text-wood-900 font-bold flex items-center justify-center text-xs">س</div>
-                            <div>
-                                <h4 class="font-bold text-xs text-gray-800">سارة .م (الجزائر العاصمة)</h4>
-                                <span class="text-[10px] text-gray-400">زبون مقتني</span>
-                            </div>
-                        </div>
-                        <div class="text-amber-400 text-xs">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                    <p class="text-xs text-gray-650 leading-relaxed">
-                        "روعة يعطيك الصحة! الخشب تاعو نقي بزاف و التثبيت تاعو ساهل ما ثقبت الحيط ما والو. المنشفة تشد مليح وماتطيحش."
-                    </p>
-                </div>
-
-                <!-- Review 2 -->
-                <div class="bg-white p-5 rounded-2xl shadow-sm border border-wood-100 space-y-3">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-2">
-                            <div class="w-8 h-8 rounded-full bg-wood-200 text-wood-900 font-bold flex items-center justify-center text-xs">ع</div>
-                            <div>
-                                <h4 class="font-bold text-xs text-gray-800">عبد القادر .ب (وهران)</h4>
-                                <span class="text-[10px] text-gray-400">زبون مقتني</span>
-                            </div>
-                        </div>
-                        <div class="text-amber-400 text-xs">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                    <p class="text-xs text-gray-650 leading-relaxed">
-                        "طلبنا عرض القطعتين ووصلنا في يومين للمنزل. الفكرة تاع الكرية الخشبية بالداخل هايلة بزاف وعملية."
-                    </p>
-                </div>
-
-                <!-- Review 3 -->
-                <div class="bg-white p-5 rounded-2xl shadow-sm border border-wood-100 space-y-3">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-2">
-                            <div class="w-8 h-8 rounded-full bg-wood-200 text-wood-900 font-bold flex items-center justify-center text-xs">أ</div>
-                            <div>
-                                <h4 class="font-bold text-xs text-gray-800">أمينة .ت (سطيف)</h4>
-                                <span class="text-[10px] text-gray-400">زبون مقتني</span>
-                            </div>
-                        </div>
-                        <div class="text-amber-400 text-xs">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                    <p class="text-xs text-gray-650 leading-relaxed">
-                        "ديكور شباب وفخم في الحمام. التوصيل كان سريع والمعاملة ممتازة شكراً متجر Bright DZ."
-                    </p>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -612,7 +418,7 @@
         </div>
     </footer>
 
-    <!-- Success Modal (نافذة نجاح الطلب المؤقتة) -->
+    <!-- Success Modal -->
     <div id="success-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
         <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full text-center space-y-4 shadow-2xl">
             <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto text-3xl">
@@ -627,7 +433,7 @@
                 </div>
                 <div class="flex justify-between items-center border-b pb-2">
                     <span class="text-gray-500 font-medium">المنتج / العرض:</span>
-                    <span id="modal-order-name" class="font-bold text-gray-800">--</span>
+                    <span id="modal-order-name" class="font-bold text-wood-800">--</span>
                 </div>
                 <div class="flex justify-between items-center">
                     <span class="text-gray-500 font-medium">حالة الطلب:</span>
@@ -644,7 +450,9 @@
 
     <!-- Scripts -->
     <script>
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxwpqmQt5X8cU54IlFxqR0oHTnkvs2WNkZw6ppTjRwcziWQLse5hkKqAUfMpoVPoFZm/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxypWDAiVUVZkLcm_DbGvsosIKpdWvcbQ5LwdxkoYbcIJzehubIrc00_WlhjY3-bkpq/exec';
+        // ضع رقم هاتف الواتساب الخاص بمتجرك هنا (بدون علامة + وبدون الصفر الأول، مثلاً 2137XXXXXXXX)
+        const STORE_WHATSAPP_NUMBER = '213700000000'; 
 
         const wilayasData = [
           { code: "1", name: "01 - أدرار", communes: ["أدرار", "اقبلي", "أولف", "بودة", "فنوغيل", "إن زغمير", "أولاد أحمد تيمي", "رقان", "سالي", "السبع", "تامنطيط", "تامست", "تيمقتن", "تيت", "تسابيت", "زاوية كنتة"] },
@@ -847,7 +655,7 @@
             document.getElementById('modal-order-id').innerText = orderId;
             document.getElementById('modal-order-name').innerText = fullOrderDetails;
 
-            // حفظ بيانات التتبع لعرضها لاحقاً في صفحة التتبع
+            // حفظ بيانات التتبع للاستخدام اللاحق
             window.lastOrderData = {
                 orderId: orderId,
                 orderName: fullOrderDetails,
@@ -889,103 +697,54 @@
                 successModal.classList.add('hidden');
             }
 
-            // نقل تفاصيل الطلب لخانة التتبع
             if (window.lastOrderData) {
-                document.getElementById('track-order-id').innerText = window.lastOrderData.orderId;
-                document.getElementById('track-order-name').innerText = window.lastOrderData.orderName;
-                document.getElementById('track-order-total').innerText = window.lastOrderData.total;
+                showTrackingView(window.lastOrderData.orderId, window.lastOrderData.orderName, window.lastOrderData.total);
+            }
+        }
+
+        // دالة البحث برقم الطلب القديم
+        function searchExistingOrder() {
+            const inputVal = document.getElementById('search-order-input').value.trim();
+            if (!inputVal) {
+                alert("يرجى إدخال رقم الطلب أولاً");
+                return;
             }
 
-            // إخفاء استمارة الطلب وإظهار قسم التتبع بالمراحل مباشرة
+            // إظهار واجهة التتبع ببيانات أولية جاري جلبها
+            showTrackingView(inputVal, 'جاري جلب تفاصيل المنتج...', '---');
+            checkOrderStatus(inputVal);
+        }
+
+        // عرض قسم التتبع وإخفاء الاستمارة
+        function showTrackingView(orderId, orderName, totalText) {
+            document.getElementById('track-order-id').innerText = orderId;
+            document.getElementById('track-order-name').innerText = orderName;
+            document.getElementById('track-order-total').innerText = totalText;
+
+            // تجهيز رابط الواتساب المباشر
+            const whatsappMsg = encodeURIComponent(`مرحباً Bright DZ، أود الاستفسار ومتابعة حالة طلبي رقم: ${orderId}`);
+            const whatsappLink = `https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${whatsappMsg}`;
+            document.getElementById('whatsapp-track-btn').href = whatsappLink;
+
             const formContainer = document.getElementById('form-container');
             const trackingContainer = document.getElementById('tracking-container');
+            const searchSection = document.getElementById('track-search-section');
 
             if (formContainer) formContainer.classList.add('hidden');
+            if (searchSection) searchSection.classList.add('hidden');
             if (trackingContainer) trackingContainer.classList.remove('hidden');
 
-            // التمرير التلقائي البصري بسلاسة إلى قسم التتبع
-            trackingContainer.scrollIntoView({ behavior: 'smooth' });
-        }
-        // عند الضغط على موافق في نافذة النجاح، ينتقل لصفحة تتبع المراحل
-        function closeModalToTracking() {
-            const successModal = document.getElementById('success-modal');
-            if (successModal) {
-                successModal.classList.remove('flex');
-                successModal.classList.add('hidden');
-            }
-
-            // نقل تفاصيل الطلب لخانة التتبع
-            if (window.lastOrderData) {
-                document.getElementById('track-order-id').innerText = window.lastOrderData.orderId;
-                document.getElementById('track-order-name').innerText = window.lastOrderData.orderName;
-                document.getElementById('track-order-total').innerText = window.lastOrderData.total;
-            }
-
-            // إخفاء استمارة الطلب وإظهار قسم التتبع بالمراحل مباشرة
-            const formContainer = document.getElementById('form-container');
-            const trackingContainer = document.getElementById('tracking-container');
-
-            if (formContainer) formContainer.classList.add('hidden');
-            if (trackingContainer) trackingContainer.classList.remove('hidden');
-
-            // التمرير التلقائي البصري بسلاسة إلى قسم التتبع
             trackingContainer.scrollIntoView({ behavior: 'smooth' });
 
-            // ---------------------------------------------------------
-            // ضع كود فحص وتحديث الحالة هنا لكي يبدأ العمل فور دخول الزبون لصفحة التتبع
-            // ---------------------------------------------------------
-            if (window.lastOrderData && window.lastOrderData.orderId) {
-                // فحص الحالة فوراً عند فتح صفحة التتبع
-                checkOrderStatus(window.lastOrderData.orderId);
-
-                // فحص الحالة تلقائياً كل 10 ثوانٍ لكي تتحدث أمام الزبون إذا قمت بتغييرها في Google Sheets
-                setInterval(() => {
-                    checkOrderStatus(window.lastOrderData.orderId);
-                }, 10000); // 10000 تعني كل 10 ثوانٍ
-            }
+            // بدء الفحص الدوري للحالة
+            checkOrderStatus(orderId);
+            if (window.statusInterval) clearInterval(window.statusInterval);
+            window.statusInterval = setInterval(() => {
+                checkOrderStatus(orderId);
+            }, 10000);
         }
-        // دالة لتحديث أشكال وألوان مراحل التتبع بصرياً في الصفحة
-        function updateTimelineUI(currentStatus) {
-            // المراحل مرتبة تصاعدياً
-            const stages = ["قيد التأكيد", "التأكيد", "في شركة التوصيل", "التسليم"];
-            
-            // تحديد رقم المرحلة الحالية (من 0 إلى 3)
-            let currentIndex = stages.indexOf(currentStatus);
-            if (currentIndex === -1) currentIndex = 0; // افتراضي إذا كانت الحالة غير معروفة
 
-            // جلب جميع عناصر مراحل التتبع (نفترض أننا سنميزها بالترتيب)
-            // سنقوم بتلوين الدوائر والنصوص بناءً على وصول الطلب لهذه المرحلة أو تجاوزها
-            const timelineItems = document.querySelectorAll('#tracking-container .space-y-6 > div');
-            
-            if (timelineItems && timelineItems.length >= 4) {
-                timelineItems.forEach((item, index) => {
-                    const iconContainer = item.querySelector('div'); // دائرة الأيقونة
-                    const titleEl = item.querySelector('h4');        // عنوان المرحلة
-                    const descEl = item.querySelector('p');          // وصف المرحلة
-
-                    if (index <= currentIndex) {
-                        // مرحلة مكتملة أو حالية (تصبح باللون البني/الأخضر الفاخر)
-                        if (iconContainer) {
-                            iconContainer.className = "w-8 h-8 rounded-full bg-wood-800 text-white flex items-center justify-center font-bold text-xs shrink-0 z-10 shadow-md";
-                            // إذا كانت المرحلة وصلت للتسليم، نضع علامة صح
-                            if(index === 3 && currentStatus === "التسليم") {
-                                iconContainer.innerHTML = '<i class="fa-solid fa-check"></i>';
-                            }
-                        }
-                        if (titleEl) titleEl.className = "font-bold text-sm text-wood-900";
-                        if (descEl) descEl.className = "text-xs text-gray-600";
-                    } else {
-                        // مراحل لم تصل إليها بعد (تظل باهتة بالرمادي)
-                        if (iconContainer) {
-                            iconContainer.className = "w-8 h-8 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center font-bold text-xs shrink-0 z-10";
-                        }
-                        if (titleEl) titleEl.className = "font-bold text-sm text-gray-400";
-                        if (descEl) descEl.className = "text-xs text-gray-400";
-                    }
-                });
-            }
-        }
-        // دالة فحص حالة الطلب من Google Sheets
+        // فحص الحالة من Google Sheets
         function checkOrderStatus(orderId) {
             if (!GOOGLE_SCRIPT_URL) return;
 
@@ -999,7 +758,7 @@
                 .catch(err => console.log('Error fetching status:', err));
         }
 
-        // دالة تحديث أشكال وألوان مراحل التتبع بصرياً في الصفحة
+        // تحديث واجهة المراحل بصرياً
         function updateTimelineUI(currentStatus) {
             const stages = ["قيد التأكيد", "التأكيد", "في شركة التوصيل", "التسليم"];
             let currentIndex = stages.indexOf(currentStatus);
