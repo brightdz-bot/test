@@ -985,6 +985,53 @@
                 });
             }
         }
+        // دالة فحص حالة الطلب من Google Sheets
+        function checkOrderStatus(orderId) {
+            if (!GOOGLE_SCRIPT_URL) return;
+
+            fetch(GOOGLE_SCRIPT_URL + '?orderId=' + orderId)
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.status) {
+                        updateTimelineUI(data.status);
+                    }
+                })
+                .catch(err => console.log('Error fetching status:', err));
+        }
+
+        // دالة تحديث أشكال وألوان مراحل التتبع بصرياً في الصفحة
+        function updateTimelineUI(currentStatus) {
+            const stages = ["قيد التأكيد", "التأكيد", "في شركة التوصيل", "التسليم"];
+            let currentIndex = stages.indexOf(currentStatus);
+            if (currentIndex === -1) currentIndex = 0;
+
+            const timelineItems = document.querySelectorAll('#tracking-container .space-y-6 > div');
+            
+            if (timelineItems && timelineItems.length >= 4) {
+                timelineItems.forEach((item, index) => {
+                    const iconContainer = item.querySelector('div'); 
+                    const titleEl = item.querySelector('h4');        
+                    const descEl = item.querySelector('p');          
+
+                    if (index <= currentIndex) {
+                        if (iconContainer) {
+                            iconContainer.className = "w-8 h-8 rounded-full bg-wood-800 text-white flex items-center justify-center font-bold text-xs shrink-0 z-10 shadow-md";
+                            if(index === 3 && currentStatus === "التسليم") {
+                                iconContainer.innerHTML = '<i class="fa-solid fa-check"></i>';
+                            }
+                        }
+                        if (titleEl) titleEl.className = "font-bold text-sm text-wood-900";
+                        if (descEl) descEl.className = "text-xs text-gray-600";
+                    } else {
+                        if (iconContainer) {
+                            iconContainer.className = "w-8 h-8 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center font-bold text-xs shrink-0 z-10";
+                        }
+                        if (titleEl) titleEl.className = "font-bold text-sm text-gray-400";
+                        if (descEl) descEl.className = "text-xs text-gray-400";
+                    }
+                });
+            }
+        }
     </script>
 </body>
 </html>
