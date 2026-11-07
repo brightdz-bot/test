@@ -906,6 +906,44 @@
             // التمرير التلقائي البصري بسلاسة إلى قسم التتبع
             trackingContainer.scrollIntoView({ behavior: 'smooth' });
         }
+        // عند الضغط على موافق في نافذة النجاح، ينتقل لصفحة تتبع المراحل
+        function closeModalToTracking() {
+            const successModal = document.getElementById('success-modal');
+            if (successModal) {
+                successModal.classList.remove('flex');
+                successModal.classList.add('hidden');
+            }
+
+            // نقل تفاصيل الطلب لخانة التتبع
+            if (window.lastOrderData) {
+                document.getElementById('track-order-id').innerText = window.lastOrderData.orderId;
+                document.getElementById('track-order-name').innerText = window.lastOrderData.orderName;
+                document.getElementById('track-order-total').innerText = window.lastOrderData.total;
+            }
+
+            // إخفاء استمارة الطلب وإظهار قسم التتبع بالمراحل مباشرة
+            const formContainer = document.getElementById('form-container');
+            const trackingContainer = document.getElementById('tracking-container');
+
+            if (formContainer) formContainer.classList.add('hidden');
+            if (trackingContainer) trackingContainer.classList.remove('hidden');
+
+            // التمرير التلقائي البصري بسلاسة إلى قسم التتبع
+            trackingContainer.scrollIntoView({ behavior: 'smooth' });
+
+            // ---------------------------------------------------------
+            // ضع كود فحص وتحديث الحالة هنا لكي يبدأ العمل فور دخول الزبون لصفحة التتبع
+            // ---------------------------------------------------------
+            if (window.lastOrderData && window.lastOrderData.orderId) {
+                // فحص الحالة فوراً عند فتح صفحة التتبع
+                checkOrderStatus(window.lastOrderData.orderId);
+
+                // فحص الحالة تلقائياً كل 10 ثوانٍ لكي تتحدث أمام الزبون إذا قمت بتغييرها في Google Sheets
+                setInterval(() => {
+                    checkOrderStatus(window.lastOrderData.orderId);
+                }, 10000); // 10000 تعني كل 10 ثوانٍ
+            }
+        }
     </script>
 </body>
 </html>
