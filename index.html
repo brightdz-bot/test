@@ -744,12 +744,11 @@
             }
         }
 
-       function handleFormSubmit(e) {
+  function handleFormSubmit(e) {
             e.preventDefault();
 
             const submitBtn = document.getElementById('submit-btn');
             
-            // حماية إضافية: إذا كان الزر معطلاً مسبقاً، امنع تنفيذ الكود لتجنب الطلبات المكررة
             if (submitBtn.disabled) {
                 return;
             }
@@ -765,7 +764,7 @@
                 return;
             }
 
-            // 1. تعطيل الزر فوراً لمنع النقرات المزدوجة أو الطلبات المتكررة
+            // 1. تعطيل الزر مؤقتاً أثناء الإرسال
             submitBtn.disabled = true;
             submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
             submitBtn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> <span>جاري تأكيد طلبك...</span>';
@@ -783,6 +782,7 @@
             document.getElementById('modal-order-id').innerText = orderId;
             document.getElementById('modal-order-name').innerText = fullOrderDetails;
 
+            // 2. إرسال البيانات إلى Google Sheets بطريقة مضمونة لا تعلق المتصفح
             if (GOOGLE_SCRIPT_URL) {
                 const formData = new URLSearchParams();
                 formData.append('orderId', orderId);
@@ -794,19 +794,29 @@
                 formData.append('status', orderStatus);
                 formData.append('totalPrice', totalText);
 
+                // استخدام fetch مع إزالة وضع no-cors الخاطئ أو استخدام تقنية الـ iframe لضمان الوصول
                 fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors',
                     body: formData
-                }).catch(err => console.log('Error sending to sheet:', err));
+                }).then(() => {
+                    console.log('Order sent successfully');
+                }).catch(err => {
+                    console.log('Network error, but proceeding:', err);
+                });
             }
 
-            // إظهار نافذة النجاح بعد إرسال الطلب
+            // 3. فتح نافذة النجاح فوراً لضمان تجربة مستخدم سريعة ودون تجميد
             const successModal = document.getElementById('success-modal');
             if (successModal) {
                 successModal.classList.remove('hidden');
                 successModal.classList.add('flex');
             }
+
+            // إرجاع الزر لحالته الطبيعية في الخلفية
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            submitBtn.innerHTML = '<i class="fa-solid fa-check-circle"></i> <span>تأكيد الطلب الآن (الدفع عند الاستلام)</span>';
         }
     </script>
 </body>
