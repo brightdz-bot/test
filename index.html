@@ -104,7 +104,7 @@
 
     <!-- Top Announcement Bar -->
     <div class="bg-wood-900 text-wood-100 text-xs sm:text-sm py-2 px-4 text-center font-bold tracking-wide flex items-center justify-center gap-2">
-       
+        <span class="bg-brandRed text-white text-[10px] sm:text-xs px-2 py-0.5 rounded-full animate-pulse">عرض خاص</span>
         <span>توصيل سريع لكافة الـ 58 ولاية | الدفع بعد المعاينة والإستلام</span>
     </div>
 
@@ -144,21 +144,23 @@
                         <span class="absolute top-4 right-4 z-10 bg-brandRed text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1">
                             <i class="fa-solid fa-fire"></i> الأوفر مبيعاً
                         </span>
+                        <!-- الصورة الكبيرة الافتتاحية -->
                         <img id="main-product-img" src="https://scontent.fqsf1-1.fna.fbcdn.net/v/t39.30808-6/886167324_2340526703368889_7648254534128825026_n.jpg?stp=dst-jpg_tt6&cstp=mx1402x1122&ctp=s640x640&_nc_cat=105&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHyOmlzTYk5KFr9OdyEVTBEoF5kjfvealKgXmSN-95qUq2g230M1HDMzg2ZX96J693xHBaQFIoKa4pm7L7emUpW&_nc_ohc=0FGZmGrtOBYQ7kNvwHT4fzH&_nc_oc=AdrbZgeBAVxBrXcS0V-Y3hYDISNWA8OxrSByAgFH1Erk5aRBQ18Yz0jTDPRy_YzT9jU&_nc_zt=23&_nc_ht=scontent.fqsf1-1.fna&_nc_gid=yB4l3Vrv3JkxVNblMPQ4RA&_nc_ss=7b2a8&oh=00_AQRYX7D7tTqDiLBcRgPNqwTkQ76RxR9C0qG3xLxDfIrzXg&oe=6AF4C5D3" alt="حامل مناشف خشبي" class="w-full h-[380px] sm:h-[450px] object-cover transition-all duration-300">
                     </div>
-                    <!-- Thumbnails -->
+                    
+                    <!-- Thumbnails (الصور المصغرة مع تفعيل التغيير والتحديد) -->
                     <div class="grid grid-cols-4 gap-2">
-                        <button onclick="changeImg(this.src)" class="border-2 border-wood-500 rounded-xl overflow-hidden bg-white shadow-sm focus:outline-none">
+                        <button type="button" onclick="changeImage(this, 'https://scontent.fqsf1-1.fna.fbcdn.net/v/t39.30808-6/886167324_2340526703368889_7648254534128825026_n.jpg?stp=dst-jpg_tt6&cstp=mx1402x1122&ctp=s640x640&_nc_cat=105&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHyOmlzTYk5KFr9OdyEVTBEoF5kjfvealKgXmSN-95qUq2g230M1HDMzg2ZX96J693xHBaQFIoKa4pm7L7emUpW&_nc_ohc=0FGZmGrtOBYQ7kNvwHT4fzH&_nc_oc=AdrbZgeBAVxBrXcS0V-Y3hYDISNWA8OxrSByAgFH1Erk5aRBQ18Yz0jTDPRy_YzT9jU&_nc_zt=23&_nc_ht=scontent.fqsf1-1.fna&_nc_gid=yB4l3Vrv3JkxVNblMPQ4RA&_nc_ss=7b2a8&oh=00_AQRYX7D7tTqDiLBcRgPNqwTkQ76RxR9C0qG3xLxDfIrzXg&oe=6AF4C5D3')" class="thumb-btn border-4 border-wood-700 rounded-xl overflow-hidden bg-white shadow-sm focus:outline-none transition">
+                            <img src="https://scontent.fqsf1-1.fna.fbcdn.net/v/t39.30808-6/886167324_2340526703368889_7648254534128825026_n.jpg?stp=dst-jpg_tt6&cstp=mx1402x1122&ctp=s640x640&_nc_cat=105&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHyOmlzTYk5KFr9OdyEVTBEoF5kjfvealKgXmSN-95qUq2g230M1HDMzg2ZX96J693xHBaQFIoKa4pm7L7emUpW&_nc_ohc=0FGZmGrtOBYQ7kNvwHT4fzH&_nc_oc=AdrbZgeBAVxBrXcS0V-Y3hYDISNWA8OxrSByAgFH1Erk5aRBQ18Yz0jTDPRy_YzT9jU&_nc_zt=23&_nc_ht=scontent.fqsf1-1.fna&_nc_gid=yB4l3Vrv3JkxVNblMPQ4RA&_nc_ss=7b2a8&oh=00_AQRYX7D7tTqDiLBcRgPNqwTkQ76RxR9C0qG3xLxDfIrzXg&oe=6AF4C5D3" class="w-full h-16 object-cover" alt="الصورة الرئيسية">
+                        </button>
+                        <button type="button" onclick="changeImage(this, 'https://scontent.faae2-2.fna.fbcdn.net/v/t39.30808-6/893107494_2341154819972744_6609817046607056108_n.webp?stp=dst-jpg_tt6&cstp=mx713x713&ctp=p526x296&_nc_cat=108&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEUiBgp__1VMfOytVLW3I42RlijLP_17dhGWKMs__Xt2HsepHgRurCBX99XkqAc6enDNV-T5BRehXfASxh7W0un&_nc_ohc=sMsTtlO2OGQQ7kNvwG7ndTi&_nc_oc=AdopCSR8mTp98fAQC0zUYOfXCUjayZEkYwLqxfqXs0a70wuuQLAVG5DMD1xbETktlsY&_nc_zt=23&_nc_ht=scontent.faae2-2.fna&_nc_gid=btZ0zcvrwe4psolAAlktIQ&_nc_ss=7b2a8&oh=00_AQRX1OrKwRVeVlz789DhryxEkN8zB0qQDzFFpcmMMhUGVA&oe=6AF55CA3')" class="thumb-btn border-4 border-transparent hover:border-wood-500 rounded-xl overflow-hidden bg-white shadow-sm focus:outline-none transition">
                             <img src="https://scontent.faae2-2.fna.fbcdn.net/v/t39.30808-6/893107494_2341154819972744_6609817046607056108_n.webp?stp=dst-jpg_tt6&cstp=mx713x713&ctp=p526x296&_nc_cat=108&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEUiBgp__1VMfOytVLW3I42RlijLP_17dhGWKMs__Xt2HsepHgRurCBX99XkqAc6enDNV-T5BRehXfASxh7W0un&_nc_ohc=sMsTtlO2OGQQ7kNvwG7ndTi&_nc_oc=AdopCSR8mTp98fAQC0zUYOfXCUjayZEkYwLqxfqXs0a70wuuQLAVG5DMD1xbETktlsY&_nc_zt=23&_nc_ht=scontent.faae2-2.fna&_nc_gid=btZ0zcvrwe4psolAAlktIQ&_nc_ss=7b2a8&oh=00_AQRX1OrKwRVeVlz789DhryxEkN8zB0qQDzFFpcmMMhUGVA&oe=6AF55CA3" class="w-full h-16 object-cover" alt="تثبيت الحمام">
                         </button>
-                        <button onclick="changeImg(this.src)" class="border-2 border-transparent hover:border-wood-500 rounded-xl overflow-hidden bg-white shadow-sm focus:outline-none">
+                        <button type="button" onclick="changeImage(this, 'https://placehold.co/150x150/faedcd/754b2d?text=%D8%A7%D9%84%D9%85%D8%B7%D8%A8%D8%AE')" class="thumb-btn border-4 border-transparent hover:border-wood-500 rounded-xl overflow-hidden bg-white shadow-sm focus:outline-none transition">
                             <img src="https://placehold.co/150x150/faedcd/754b2d?text=%D8%A7%D9%84%D9%85%D8%B7%D8%A8%D8%AE" class="w-full h-16 object-cover" alt="المطبخ">
                         </button>
-                        <button onclick="changeImg(this.src)" class="border-2 border-transparent hover:border-wood-500 rounded-xl overflow-hidden bg-white shadow-sm focus:outline-none">
+                        <button type="button" onclick="changeImage(this, 'https://placehold.co/150x150/e9edc9/754b2d?text=%D8%A7%D9%84%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84')" class="thumb-btn border-4 border-transparent hover:border-wood-500 rounded-xl overflow-hidden bg-white shadow-sm focus:outline-none transition">
                             <img src="https://placehold.co/150x150/e9edc9/754b2d?text=%D8%A7%D9%84%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84" class="w-full h-16 object-cover" alt="تفاصيل الخشب">
-                        </button>
-                        <button onclick="changeImg(this.src)" class="border-2 border-transparent hover:border-wood-500 rounded-xl overflow-hidden bg-white shadow-sm focus:outline-none">
-                            <img src="https://placehold.co/150x150/fdfbf7/754b2d?text=%D8%A2%D9%84%D9%8A%D8%A9+%D8%A7%D9%84%D9%82%D9%81%D9%8ל" class="w-full h-16 object-cover" alt="آلية القفل">
                         </button>
                     </div>
                 </div>
@@ -173,7 +175,7 @@
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                         </div>
-                        
+                        <span class="text-gray-600">(+500 تقييم ممتازة من زبائننا)</span>
                     </div>
 
                     <h1 class="text-2xl sm:text-3xl font-extrabold text-wood-900 leading-tight">
@@ -485,7 +487,7 @@
 
     <!-- Scripts -->
     <script>
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxTcwZTwfNKtA9-L9yZpvydYPexdTe0jlWPfzeeNERU2oE_mXDkWOeeXDsFiLEfaNUZ/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxypWDAiVUVZkLcm_DbGvsosIKpdWvcbQ5LwdxkoYbcIJzehubIrc00_WlhjY3-bkpq/exec';
         const STORE_WHATSAPP_NUMBER = '213798353165'; 
 
         const wilayasData = [
@@ -565,7 +567,7 @@
                 });
                 onWilayaChange();
             }
-            selectOffer('pack2', 2300); // تحديد العرض الافتراضي
+            selectOffer('pack2', 2300);
         };
 
         function onWilayaChange() {
@@ -588,19 +590,28 @@
             }
         }
 
-        function changeImg(src) {
-            document.getElementById('main-product-img').src = src;
+        // دالة تغيير الصورة الكبيرة وتحديث مظهر الأزرار المصغرة
+        function changeImage(buttonEl, imageUrl) {
+            // تغيير الصورة الكبيرة
+            document.getElementById('main-product-img').src = imageUrl;
+            
+            // إزالة حدود التحديد من جميع الصور المصغرة وإضافتها للصورة المختارة
+            const thumbs = document.querySelectorAll('.thumb-btn');
+            thumbs.forEach(btn => {
+                btn.classList.remove('border-wood-700');
+                btn.classList.add('border-transparent');
+            });
+            
+            buttonEl.classList.remove('border-transparent');
+            buttonEl.classList.add('border-wood-700');
         }
 
-        // دالة لاختيار العرض من البطاقات التفاعلية بالأعلى
         function selectOffer(packId, price) {
-            // تحديث الاستمارة بالأسفل
             const bundleSelect = document.getElementById('bundle-select');
             if (bundleSelect) {
                 bundleSelect.value = packId;
             }
             
-            // تحديث مظهر البطاقات
             ['pack1', 'pack2', 'pack4'].forEach(id => {
                 const card = document.getElementById('card-' + id);
                 const radio = document.getElementById('radio-' + id);
@@ -620,7 +631,6 @@
             updateBundleDetails(packId, price);
         }
 
-        // عندما يتغير العرض من القائمة المنسدلة في الاستمارة
         function updateBundleFromSelect() {
             const bundleSelect = document.getElementById('bundle-select');
             if (!bundleSelect) return;
@@ -629,7 +639,6 @@
             if (val === 'pack2') price = 2300;
             if (val === 'pack4') price = 3800;
             
-            // تحديث البطاقات بالأعلى أيضاً لتبقى متزامنة
             ['pack1', 'pack2', 'pack4'].forEach(id => {
                 const card = document.getElementById('card-' + id);
                 const radio = document.getElementById('radio-' + id);
