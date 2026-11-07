@@ -744,8 +744,15 @@
             }
         }
 
-        function handleFormSubmit(e) {
+       function handleFormSubmit(e) {
             e.preventDefault();
+
+            const submitBtn = document.getElementById('submit-btn');
+            
+            // حماية إضافية: إذا كان الزر معطلاً مسبقاً، امنع تنفيذ الكود لتجنب الطلبات المكررة
+            if (submitBtn.disabled) {
+                return;
+            }
 
             const fullName = document.getElementById('fullname').value;
             const phone = document.getElementById('phone').value;
@@ -757,6 +764,11 @@
                 alert("يرجى اختيار البلدية");
                 return;
             }
+
+            // 1. تعطيل الزر فوراً لمنع النقرات المزدوجة أو الطلبات المتكررة
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> <span>جاري تأكيد طلبك...</span>';
 
             const bundleSelect = document.getElementById('bundle-select');
             const bundleVal = bundleSelect ? bundleSelect.value : 'pack2';
@@ -789,20 +801,12 @@
                 }).catch(err => console.log('Error sending to sheet:', err));
             }
 
+            // إظهار نافذة النجاح بعد إرسال الطلب
             const successModal = document.getElementById('success-modal');
             if (successModal) {
                 successModal.classList.remove('hidden');
                 successModal.classList.add('flex');
             }
-        }
-
-        function closeModal() {
-            const successModal = document.getElementById('success-modal');
-            if (successModal) {
-                successModal.classList.remove('flex');
-                successModal.classList.add('hidden');
-            }
-            location.reload();
         }
     </script>
 </body>
