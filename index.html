@@ -448,12 +448,13 @@
         </div>
     </div>
 
-  <script>
+    <!-- Scripts -->
+    <script>
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxypWDAiVUVZkLcm_DbGvsosIKpdWvcbQ5LwdxkoYbcIJzehubIrc00_WlhjY3-bkpq/exec';
-        const STORE_WHATSAPP_NUMBER = '213798353165'; 
+        // ضع رقم هاتف الواتساب الخاص بمتجرك هنا (بدون علامة + وبدون الصفر الأول، مثلاً 2137XXXXXXXX)
+        const STORE_WHATSAPP_NUMBER = '213700000000'; 
 
-        // [احتفظ بجميع الدوال الأخرى لديك مثل wilayasData و handleFormSubmit هنا ...]
-       const wilayasData = [
+        const wilayasData = [
           { code: "1", name: "01 - أدرار", communes: ["أدرار", "اقبلي", "أولف", "بودة", "فنوغيل", "إن زغمير", "أولاد أحمد تيمي", "رقان", "سالي", "السبع", "تامنطيط", "تامست", "تيمقتن", "تيت", "تسابيت", "زاوية كنتة"] },
           { code: "2", name: "02 - الشلف", communes: ["أبو الحسن", "عين مران", "بنايرية", "بني بوعتاب", "بني حواء", "بني راشد", "بوقادير", "بوزغاية", "بريرة", "الشطية", "الشلف", "الظهرة", "الحجاج", "الكريمية", "المرسى", "حرشون", "الهرانفة", "الأبيض مجاجة", "مصدق", "وادي الفضة", "وادي قوسين", "وادي سلي", "أولاد عباس", "أولاد بن عبد القادر", "أولاد فارس", "أم الدروع", "سنجاس", "سيدي عبد الرحمن", "سيدي عكاشة", "الصبحة", "تاجنة", "تلعصة", "تاوقريت", "تنس", "الزبوجة"] },
           { code: "3", name: "03 - الأغواط", communes: ["أفلو", "عين ماضي", "عين سيدي علي", "بن ناصر بن شهرة", "بريدة", "العسافية", "البيضاء", "الغيشة", "الحويطة", "قلتة سيدي سعد", "الحاج مشري", "حاسي الدلاعة", "حاسي الرمل", "الخنق", "قصر الحيران", "الأغواط", "وادي مزي", "وادي مرة", "سبقاق", "سيدي بوزيد", "سيدي مخلوف", "تاجموت", "تاجرونة", "تاويالة"] },
@@ -514,35 +515,254 @@
           { code: "58", name: "58 - المنيعة", communes: ["المنيعة", "حاسي الفحل", "حاسي القارة"] }
         ];
 
-        // 1. دالة فحص الحالة باستخدام JSONP الصحيح لتجاوز حظر المتصفح
+        let currentPrice = 2300;
+        let currentBundleName = 'عرض القطعتين (باك المطبخ والحمام)';
+
+        window.onload = function() {
+            const selectWilaya = document.getElementById('wilaya-select');
+            if (selectWilaya) {
+                selectWilaya.innerHTML = '<option value="">إختر الولاية...</option>';
+                wilayasData.forEach(w => {
+                    const opt = document.createElement('option');
+                    opt.value = w.name;
+                    opt.innerText = w.name;
+                    if(w.code === "16") opt.selected = true;
+                    selectWilaya.appendChild(opt);
+                });
+                onWilayaChange();
+            }
+        };
+
+        function onWilayaChange() {
+            const selectedWilayaName = document.getElementById('wilaya-select').value;
+            const communeSelect = document.getElementById('commune-select');
+            
+            communeSelect.innerHTML = '<option value="">إختر البلدية...</option>';
+            
+            const wObj = wilayasData.find(w => w.name === selectedWilayaName);
+            if (wObj && wObj.communes) {
+                wObj.communes.forEach(c => {
+                    const opt = document.createElement('option');
+                    opt.value = c;
+                    opt.innerText = c;
+                    communeSelect.appendChild(opt);
+                });
+                if (wObj.communes.length > 0) {
+                    communeSelect.selectedIndex = 1;
+                }
+            }
+        }
+
+        function changeImg(src) {
+            document.getElementById('main-product-img').src = src;
+        }
+
+        function selectPack(packId, price) {
+            document.querySelectorAll('.pack-card').forEach(card => {
+                card.classList.remove('border-wood-500', 'shadow-xl', 'ring-2', 'ring-wood-500');
+                card.classList.add('border-gray-200');
+            });
+            const selectedCard = document.getElementById('card-' + packId);
+            if (selectedCard) {
+                selectedCard.classList.remove('border-gray-200');
+                selectedCard.classList.add('border-wood-500', 'shadow-xl', 'ring-2', 'ring-wood-500');
+            }
+            const bundleSelect = document.getElementById('bundle-select');
+            if (bundleSelect) bundleSelect.value = packId;
+
+            updateBundleDetails(packId, price);
+        }
+
+        function updateBundleFromSelect() {
+            const bundleSelect = document.getElementById('bundle-select');
+            if (!bundleSelect) return;
+            const val = bundleSelect.value;
+            let price = 1400;
+            if (val === 'pack2') price = 2300;
+            if (val === 'pack4') price = 3800;
+            
+            document.querySelectorAll('.pack-card').forEach(card => {
+                card.classList.remove('border-wood-500', 'shadow-xl', 'ring-2', 'ring-wood-500');
+                card.classList.add('border-gray-200');
+            });
+            const selectedCard = document.getElementById('card-' + val);
+            if (selectedCard) {
+                selectedCard.classList.remove('border-gray-200');
+                selectedCard.classList.add('border-wood-500', 'shadow-xl', 'ring-2', 'ring-wood-500');
+            }
+            updateBundleDetails(val, price);
+        }
+
+        function updateBundleDetails(packId, price) {
+            currentPrice = price;
+            if (packId === 'pack1') {
+                currentBundleName = 'العرض العادي (قطعة واحدة)';
+            } else if (packId === 'pack2') {
+                currentBundleName = 'عرض القطعتين (باك المطبخ والحمام)';
+            } else if (packId === 'pack4') {
+                currentBundleName = 'العرض العائلي الفاخر (4 قطع)';
+            }
+            updateSummary(price);
+        }
+
+        function updateSummary(price) {
+            const priceEl = document.getElementById('summary-price');
+            const shippingEl = document.getElementById('summary-shipping');
+            const totalEl = document.getElementById('summary-total');
+
+            if (priceEl) priceEl.innerText = price.toLocaleString() + ' دج';
+            if (shippingEl) {
+                shippingEl.innerText = 'حسب الولاية 🚛';
+                shippingEl.className = 'font-bold text-gray-800';
+            }
+            if (totalEl) {
+                totalEl.innerText = price.toLocaleString() + ' دج + التوصيل';
+            }
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submit-btn');
+            if (submitBtn.disabled) return;
+
+            const fullName = document.getElementById('fullname').value;
+            const phone = document.getElementById('phone').value;
+            const wilaya = document.getElementById('wilaya-select').value;
+            const commune = document.getElementById('commune-select').value;
+            const totalText = document.getElementById('summary-total').innerText;
+
+            if (!commune) {
+                alert("يرجى اختيار البلدية");
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> <span>جاري تأكيد طلبك...</span>';
+
+            const bundleSelect = document.getElementById('bundle-select');
+            const bundleVal = bundleSelect ? bundleSelect.value : 'pack2';
+            let quantity = "1";
+            if (bundleVal === 'pack2') quantity = "2";
+            if (bundleVal === 'pack4') quantity = "4";
+
+            const orderId = "ORD-" + Math.floor(Math.random() * 899999 + 100000);
+            const fullOrderDetails = currentBundleName + ' (الكمية: ' + quantity + ')';
+            const orderStatus = "قيد التأكيد";
+
+            // ملء بيانات الـ Modal المؤقت
+            document.getElementById('modal-order-id').innerText = orderId;
+            document.getElementById('modal-order-name').innerText = fullOrderDetails;
+
+            // حفظ بيانات التتبع للاستخدام اللاحق
+            window.lastOrderData = {
+                orderId: orderId,
+                orderName: fullOrderDetails,
+                total: totalText
+            };
+
+            // إرسال البيانات إلى Google Sheets
+            if (GOOGLE_SCRIPT_URL) {
+                const formData = new URLSearchParams();
+                formData.append('orderId', orderId);
+                formData.append('fullName', fullName);
+                formData.append('phone', phone);
+                formData.append('wilaya', wilaya);
+                formData.append('commune', commune);
+                formData.append('order', fullOrderDetails);
+                formData.append('status', orderStatus);
+                formData.append('totalPrice', totalText);
+
+                fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: formData
+                }).catch(err => console.log('Error sending to sheet:', err));
+            }
+
+            // إظهار نافذة النجاح المصغرة
+            const successModal = document.getElementById('success-modal');
+            if (successModal) {
+                successModal.classList.remove('hidden');
+                successModal.classList.add('flex');
+            }
+        }
+
+        // عند الضغط على موافق في نافذة النجاح، ينتقل لصفحة تتبع المراحل
+        function closeModalToTracking() {
+            const successModal = document.getElementById('success-modal');
+            if (successModal) {
+                successModal.classList.remove('flex');
+                successModal.classList.add('hidden');
+            }
+
+            if (window.lastOrderData) {
+                showTrackingView(window.lastOrderData.orderId, window.lastOrderData.orderName, window.lastOrderData.total);
+            }
+        }
+
+        // دالة البحث برقم الطلب القديم
+        function searchExistingOrder() {
+            const inputVal = document.getElementById('search-order-input').value.trim();
+            if (!inputVal) {
+                alert("يرجى إدخال رقم الطلب أولاً");
+                return;
+            }
+
+            // إظهار واجهة التتبع ببيانات أولية جاري جلبها
+            showTrackingView(inputVal, 'جاري جلب تفاصيل المنتج...', '---');
+            checkOrderStatus(inputVal);
+        }
+
+        // عرض قسم التتبع وإخفاء الاستمارة
+        function showTrackingView(orderId, orderName, totalText) {
+            document.getElementById('track-order-id').innerText = orderId;
+            document.getElementById('track-order-name').innerText = orderName;
+            document.getElementById('track-order-total').innerText = totalText;
+
+            // تجهيز رابط الواتساب المباشر
+            const whatsappMsg = encodeURIComponent(`مرحباً Bright DZ، أود الاستفسار ومتابعة حالة طلبي رقم: ${orderId}`);
+            const whatsappLink = `https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${whatsappMsg}`;
+            document.getElementById('whatsapp-track-btn').href = whatsappLink;
+
+            const formContainer = document.getElementById('form-container');
+            const trackingContainer = document.getElementById('tracking-container');
+            const searchSection = document.getElementById('track-search-section');
+
+            if (formContainer) formContainer.classList.add('hidden');
+            if (searchSection) searchSection.classList.add('hidden');
+            if (trackingContainer) trackingContainer.classList.remove('hidden');
+
+            trackingContainer.scrollIntoView({ behavior: 'smooth' });
+
+            // بدء الفحص الدوري للحالة
+            checkOrderStatus(orderId);
+            if (window.statusInterval) clearInterval(window.statusInterval);
+            window.statusInterval = setInterval(() => {
+                checkOrderStatus(orderId);
+            }, 10000);
+        }
+
+        // فحص الحالة من Google Sheets
         function checkOrderStatus(orderId) {
             if (!GOOGLE_SCRIPT_URL) return;
 
-            const callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
-            window[callbackName] = function(data) {
-                delete window[callbackName];
-                if (scriptTag && scriptTag.parentNode) {
-                    document.body.removeChild(scriptTag);
-                }
-                if (data && data.status) {
-                    updateTimelineUI(data.status);
-                }
-            };
-
-            const scriptTag = document.createElement('script');
-            scriptTag.src = `${GOOGLE_SCRIPT_URL}?orderId=${encodeURIComponent(orderId)}&callback=${callbackName}`;
-            scriptTag.onerror = function() {
-                console.log('Error loading status via JSONP');
-            };
-            document.body.appendChild(scriptTag);
+            fetch(GOOGLE_SCRIPT_URL + '?orderId=' + orderId)
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.status) {
+                        updateTimelineUI(data.status);
+                    }
+                })
+                .catch(err => console.log('Error fetching status:', err));
         }
 
-        // 2. دالة تحديث أشكال وألوان مراحل التتبع بصرياً (نسخة واحدة صحيحة ومضبوطة)
+        // تحديث واجهة المراحل بصرياً
         function updateTimelineUI(currentStatus) {
             const stages = ["قيد التأكيد", "التأكيد", "في شركة التوصيل", "التسليم"];
-            
-            let currentIndex = stages.indexOf(currentStatus.trim());
-            if (currentIndex === -1) currentIndex = 0; 
+            let currentIndex = stages.indexOf(currentStatus);
+            if (currentIndex === -1) currentIndex = 0;
 
             const timelineItems = document.querySelectorAll('#tracking-container .space-y-6 > div');
             
@@ -555,7 +775,7 @@
                     if (index <= currentIndex) {
                         if (iconContainer) {
                             iconContainer.className = "w-8 h-8 rounded-full bg-wood-800 text-white flex items-center justify-center font-bold text-xs shrink-0 z-10 shadow-md";
-                            if(index === 3 && currentStatus.trim() === "التسليم") {
+                            if(index === 3 && currentStatus === "التسليم") {
                                 iconContainer.innerHTML = '<i class="fa-solid fa-check"></i>';
                             }
                         }
@@ -572,6 +792,5 @@
             }
         }
     </script>
-    
 </body>
 </html>
