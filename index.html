@@ -451,7 +451,6 @@
     <!-- Scripts -->
     <script>
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxypWDAiVUVZkLcm_DbGvsosIKpdWvcbQ5LwdxkoYbcIJzehubIrc00_WlhjY3-bkpq/exec';
-        // ضع رقم هاتف الواتساب الخاص بمتجرك هنا (بدون علامة + وبدون الصفر الأول، مثلاً 2137XXXXXXXX)
         const STORE_WHATSAPP_NUMBER = '213798353165'; 
 
         const wilayasData = [
@@ -473,7 +472,7 @@
           { code: "16", name: "16 - الجزائر العاصمة", communes: ["الجزائر الوسطى", "باب الوادي", "سيدي امحمد", "الأبيار", "حيدرة", "بن عكنون", "الشراقة", "دالي إبراهيم", "الدرارية", "بئر مراد رايس", "بئر خادم", "القبة", "الحراش", "باب الزوار", "الدار البيضاء", "الرويبة", "زرالدة", "عين البنيان", "الرغاية", "البرج الكيفان", "الكاليتوس", "براقي", "باش جراح", "المقرية", "المرادية", "بوزريعة", "بني المسوس", "السحاولة", "الخرايسية", "العاشور"] },
           { code: "17", name: "17 - الجلفة", communes: ["عين الشهداء", "عين الإبل", "عين فقه", "عين معبد", "عين وسارة", "عمورة", "بنهار", "بن يعقوب", "بيرين", "بويرة الأحداب", "الشارف", "دار الشيوخ", "دلدول", "الجلفة", "دويس", "القديد", "الادريسية", "الخميس", "فيض البطمة", "قرنيني", "قطارة", "حد الصحاري", "حاسي بحبح", "حاسي العش", "حاسي فدول", "مليليحة", "مسعد", "مجبارة", "أم العظام", "سد الرحال", "سلمانة", "سيدي بايزيد", "سيدي لعجال", "تعظميت", "زعفران", "زكار"] },
           { code: "18", name: "18 - جيجل", communes: ["برج الطهر", "بودريعة بني ياجيس", "بوراوي بلهادف", "بوسيف أولاد عسكر", "الشحنة", "الشقفة", "الجمعة بني حبيبي", "جيملة", "العنصر", "العوانة", "القنار نشفي", "الميلية", "الامير عبد القادر", "أراقن سويسي", "غبالة", "جيجل", "قاوس", "خيري واد عجول", "وجانة", "أولاد رابح", "أولاد يحيى خدروش", "سلمى بن زيادة", "السطارة", "سيدي عبد العزيز", "سيدي معروف", "الطاهير", "تاكسنة", "زيامة منصورية"] },
-          { code: "19", name: "19 - سطيف", communes: ["عين عباسة", "عين أرنات", "عين أزال", "عين الكبيرة", "عين الحجر", "عين ولمان", "عين لقراج", "عين الروى", "عين السبت", "أيت نوال مزادة", "ايت تيزي", "عموشة", "بابور", "بازر سكرة", "بيضاء برج", "بلاعة", "بني شبانة", "بني فودة", "بني ورتيلان", "بني وسين", "بني عزيز", "بني موحلي", "بئر حدادة", "بئر العرش", "بوعنداس", "بوقاعة", "بوسلام", "بوطالب", "الدهامشة", "جميلة", "ذراع قبيلة", "العلمة", "أوريسيا", "الولجة", "قلال", "قلتة زرقاء", "قنزات", "قجال", "حمام السخنة", "الحامة", "حمام قرقور", "حربيل", "قصر الابطال", "معاوية", "ماوكلان", "مزلوق", "واد البارد", "أولاد عدوان", "أولاد صابر", "أولاد سي أحمد", "أولاد تبان", "الرصفة", "صالح باي", "سرج الغول", "سطيف", "تاشودة", "تالة إيفاسن", "الطاية", "التلة", "تيزي نبشار"] },
+          { code: "19", name: "19 - سطيف", communes: ["عين عباسة", "عين أرنات", "عين أزال", "عين الكبيرة", "عين الحجر", "عين ولمان", "عين لقراج", "عين الروى", "عين السبت", "أيت نوال مزادة", "ايت تيزي", "عموشة", "بابور", "بازر سكرة", "بيضاء برج", "بلاعة", "بني شبانة", "بني فودة", "بني ورتيلان", "بني وسين", "بني عزيز", "بني موحلي", "بئر حدادة", "بئر العرش", "بوعنداس", "بوقاعة", "بوسلام", "بوطالب", "الدهامشة", "جميلة", "ذراع قبيلة", "العلمة", "أوريسيا", "الولجة", "قلال", "قلتة زرقاء", "قنزات", "قجال", "حمام السخنة", "الحامة", "حمام قرقور", "حربيل", "قصر الابطال", "معاوية", "ماوكلان", "مزلوق", "واد البارد", "أولاد عدوان", "أولاد صابر", "أولاد سي أحمد", "أولاد تبان", "الرصفة", "ص صالح باي", "سرج الغول", "سطيف", "تاشودة", "تالة إيفاسن", "الطاية", "التلة", "تيزي نبشار"] },
           { code: "20", name: "20 - سعيدة", communes: ["عين الحجر", "عين السخونة", "عين السلطان", "دوي ثابت", "الحساسنة", "هونت", "المعمورة", "مولاي العربي", "أولاد إبراهيم", "أولاد خالد", "سعيدة", "سيدي احمد", "سيدي عمر", "سيدي بوبكر", "تيرسين", "يوب"] },
           { code: "21", name: "21 - سكيكدة", communes: ["عين بوزيان", "عين شرشار", "عين قشرة", "عين زويت", "عزابة", "بكوش لخضر", "بن عزوز", "بني بشير", "بني ولبان", "بني زيد", "بين الويدان", "بوشطاطة", "الشرايع", "القل", "جندل سعدي محمد", "الحروش", "الغدير", "الحدائق", "المرسى", "مجاز الدشيش", "السبت", "فلفلة", "حمادي كرومة", "قنواع", "الكركرة", "خناق مايو", "وادي الزهور", "الولجة بولبلوط", "أولاد عطية", "أولاد حبابة", "أم الطوب", "رمضان جمال", "صالح بو الشعور", "سيدي مزغيش", "سكيكدة", "تمالوس", "زردازة", "الزيتونة"] },
           { code: "22", name: "22 - سيدي بلعباس", communes: ["عين البرد", "عين قادة", "عين الثريد", "عين تندمين", "عين أدن", "العمارنة", "بضرابين المقراني", "بلعربي", "بن باديس", "بن عشيبة شلية", "بئر الحمام", "بوجبهة البرج", "بوخنفيس", "شيطوان البلايلة", "الضاية", "الحصيبة", "حاسي دحو", "حاسي زهانة", "لمطار", "مسيد", "مكدرة", "مرحوم", "مرين", "مزاورو", "مصطفى بن ابراهيم", "مولاي سليسن", "وادي السبع", "وادي سفيون", "وادي تاوريرة", "راس الماء", "رجم دموش", "السهالة الثورة", "سفيزف", "سيدي علي بن يوب", "سيدي علي بوسيدي", "سيدي بلعباس", "سيدي ابراهيم", "سيدي شعيب", "سيدي دحو الزاير", "سيدي حمادوش", "سيدي خالد", "سيدي لحسن", "سيدي يعقوب", "طابية", "تاودموت", "تفسور", "تغاليمت", "تلاغ", "تنيرة", "تسالة", "تلموني", "زروالة"] },
@@ -557,22 +556,6 @@
             document.getElementById('main-product-img').src = src;
         }
 
-        function selectPack(packId, price) {
-            document.querySelectorAll('.pack-card').forEach(card => {
-                card.classList.remove('border-wood-500', 'shadow-xl', 'ring-2', 'ring-wood-500');
-                card.classList.add('border-gray-200');
-            });
-            const selectedCard = document.getElementById('card-' + packId);
-            if (selectedCard) {
-                selectedCard.classList.remove('border-gray-200');
-                selectedCard.classList.add('border-wood-500', 'shadow-xl', 'ring-2', 'ring-wood-500');
-            }
-            const bundleSelect = document.getElementById('bundle-select');
-            if (bundleSelect) bundleSelect.value = packId;
-
-            updateBundleDetails(packId, price);
-        }
-
         function updateBundleFromSelect() {
             const bundleSelect = document.getElementById('bundle-select');
             if (!bundleSelect) return;
@@ -581,15 +564,6 @@
             if (val === 'pack2') price = 2300;
             if (val === 'pack4') price = 3800;
             
-            document.querySelectorAll('.pack-card').forEach(card => {
-                card.classList.remove('border-wood-500', 'shadow-xl', 'ring-2', 'ring-wood-500');
-                card.classList.add('border-gray-200');
-            });
-            const selectedCard = document.getElementById('card-' + val);
-            if (selectedCard) {
-                selectedCard.classList.remove('border-gray-200');
-                selectedCard.classList.add('border-wood-500', 'shadow-xl', 'ring-2', 'ring-wood-500');
-            }
             updateBundleDetails(val, price);
         }
 
@@ -651,18 +625,15 @@
             const fullOrderDetails = currentBundleName + ' (الكمية: ' + quantity + ')';
             const orderStatus = "قيد التأكيد";
 
-            // ملء بيانات الـ Modal المؤقت
             document.getElementById('modal-order-id').innerText = orderId;
             document.getElementById('modal-order-name').innerText = fullOrderDetails;
 
-            // حفظ بيانات التتبع للاستخدام اللاحق
             window.lastOrderData = {
                 orderId: orderId,
                 orderName: fullOrderDetails,
                 total: totalText
             };
 
-            // إرسال البيانات إلى Google Sheets
             if (GOOGLE_SCRIPT_URL) {
                 const formData = new URLSearchParams();
                 formData.append('orderId', orderId);
@@ -681,7 +652,6 @@
                 }).catch(err => console.log('Error sending to sheet:', err));
             }
 
-            // إظهار نافذة النجاح المصغرة
             const successModal = document.getElementById('success-modal');
             if (successModal) {
                 successModal.classList.remove('hidden');
@@ -689,7 +659,6 @@
             }
         }
 
-        // عند الضغط على موافق في نافذة النجاح، ينتقل لصفحة تتبع المراحل
         function closeModalToTracking() {
             const successModal = document.getElementById('success-modal');
             if (successModal) {
@@ -702,7 +671,6 @@
             }
         }
 
-        // دالة البحث برقم الطلب القديم
         function searchExistingOrder() {
             const inputVal = document.getElementById('search-order-input').value.trim();
             if (!inputVal) {
@@ -710,18 +678,15 @@
                 return;
             }
 
-            // إظهار واجهة التتبع ببيانات أولية جاري جلبها
             showTrackingView(inputVal, 'جاري جلب تفاصيل المنتج...', '---');
             checkOrderStatus(inputVal);
         }
 
-        // عرض قسم التتبع وإخفاء الاستمارة
         function showTrackingView(orderId, orderName, totalText) {
             document.getElementById('track-order-id').innerText = orderId;
             document.getElementById('track-order-name').innerText = orderName;
             document.getElementById('track-order-total').innerText = totalText;
 
-            // تجهيز رابط الواتساب المباشر
             const whatsappMsg = encodeURIComponent(`مرحباً Bright DZ، أود الاستفسار ومتابعة حالة طلبي رقم: ${orderId}`);
             const whatsappLink = `https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${whatsappMsg}`;
             document.getElementById('whatsapp-track-btn').href = whatsappLink;
@@ -735,8 +700,16 @@
             if (trackingContainer) trackingContainer.classList.remove('hidden');
 
             trackingContainer.scrollIntoView({ behavior: 'smooth' });
-            
-            // 1. دالة فحص الحالة باستخدام JSONP الصحيح لتجاوز حظر المتصفح
+
+            checkOrderStatus(orderId);
+            if (window.statusInterval) clearInterval(window.statusInterval);
+            window.statusInterval = setInterval(() => {
+                checkOrderStatus(orderId);
+            }, 10000);
+        }
+
+        // --- الدوال الأساسية المرتبة بشكل صحيح خارج أي دالة أخرى ---
+
         function checkOrderStatus(orderId) {
             if (!GOOGLE_SCRIPT_URL) return;
 
@@ -759,7 +732,6 @@
             document.body.appendChild(scriptTag);
         }
 
-  // 2. دالة تحديث أشكال وألوان مراحل التتبع بصرياً (نسخة واحدة صحيحة ومضبوطة)
         function updateTimelineUI(currentStatus) {
             const stages = ["قيد التأكيد", "التأكيد", "في شركة التوصيل", "التسليم"];
             
