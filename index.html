@@ -791,6 +791,47 @@
                 });
             }
         }
+         // دالة لتحديث أشكال وألوان مراحل التتبع بصرياً في الصفحة
+        function updateTimelineUI(currentStatus) {
+            // المراحل مرتبة تصاعدياً
+            const stages = ["قيد التأكيد", "التأكيد", "في شركة التوصيل", "التسليم"];
+            
+            // تحديد رقم المرحلة الحالية (من 0 إلى 3)
+            let currentIndex = stages.indexOf(currentStatus);
+            if (currentIndex === -1) currentIndex = 0; // افتراضي إذا كانت الحالة غير معروفة
+
+            // جلب جميع عناصر مراحل التتبع (نفترض أننا سنميزها بالترتيب)
+            // سنقوم بتلوين الدوائر والنصوص بناءً على وصول الطلب لهذه المرحلة أو تجاوزها
+            const timelineItems = document.querySelectorAll('#tracking-container .space-y-6 > div');
+            
+            if (timelineItems && timelineItems.length >= 4) {
+                timelineItems.forEach((item, index) => {
+                    const iconContainer = item.querySelector('div'); // دائرة الأيقونة
+                    const titleEl = item.querySelector('h4');        // عنوان المرحلة
+                    const descEl = item.querySelector('p');          // وصف المرحلة
+
+                    if (index <= currentIndex) {
+                        // مرحلة مكتملة أو حالية (تصبح باللون البني/الأخضر الفاخر)
+                        if (iconContainer) {
+                            iconContainer.className = "w-8 h-8 rounded-full bg-wood-800 text-white flex items-center justify-center font-bold text-xs shrink-0 z-10 shadow-md";
+                            // إذا كانت المرحلة وصلت للتسليم، نضع علامة صح
+                            if(index === 3 && currentStatus === "التسليم") {
+                                iconContainer.innerHTML = '<i class="fa-solid fa-check"></i>';
+                            }
+                        }
+                        if (titleEl) titleEl.className = "font-bold text-sm text-wood-900";
+                        if (descEl) descEl.className = "text-xs text-gray-600";
+                    } else {
+                        // مراحل لم تصل إليها بعد (تظل باهتة بالرمادي)
+                        if (iconContainer) {
+                            iconContainer.className = "w-8 h-8 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center font-bold text-xs shrink-0 z-10";
+                        }
+                        if (titleEl) titleEl.className = "font-bold text-sm text-gray-400";
+                        if (descEl) descEl.className = "text-xs text-gray-400";
+                    }
+                });
+            }
+        }
         // دالة فحص حالة الطلب من Google Sheets
         function checkOrderStatus(orderId) {
             if (!GOOGLE_SCRIPT_URL) return;
