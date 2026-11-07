@@ -452,7 +452,7 @@
     <script>
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxypWDAiVUVZkLcm_DbGvsosIKpdWvcbQ5LwdxkoYbcIJzehubIrc00_WlhjY3-bkpq/exec';
         // ضع رقم هاتف الواتساب الخاص بمتجرك هنا (بدون علامة + وبدون الصفر الأول، مثلاً 2137XXXXXXXX)
-        const STORE_WHATSAPP_NUMBER = '213700000000'; 
+        const STORE_WHATSAPP_NUMBER = '213798353165'; 
 
         const wilayasData = [
           { code: "1", name: "01 - أدرار", communes: ["أدرار", "اقبلي", "أولف", "بودة", "فنوغيل", "إن زغمير", "أولاد أحمد تيمي", "رقان", "سالي", "السبع", "تامنطيط", "تامست", "تيمقتن", "تيت", "تسابيت", "زاوية كنتة"] },
@@ -735,34 +735,36 @@
             if (trackingContainer) trackingContainer.classList.remove('hidden');
 
             trackingContainer.scrollIntoView({ behavior: 'smooth' });
-
-            // بدء الفحص الدوري للحالة
-            checkOrderStatus(orderId);
-            if (window.statusInterval) clearInterval(window.statusInterval);
-            window.statusInterval = setInterval(() => {
-                checkOrderStatus(orderId);
-            }, 10000);
-        }
-
-        // فحص الحالة من Google Sheets
+            
+            // 1. دالة فحص الحالة باستخدام JSONP الصحيح لتجاوز حظر المتصفح
         function checkOrderStatus(orderId) {
             if (!GOOGLE_SCRIPT_URL) return;
 
-            fetch(GOOGLE_SCRIPT_URL + '?orderId=' + orderId)
-                .then(response => response.json())
-                .then(data => {
-                    if (data && data.status) {
-                        updateTimelineUI(data.status);
-                    }
-                })
-                .catch(err => console.log('Error fetching status:', err));
+            const callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
+            window[callbackName] = function(data) {
+                delete window[callbackName];
+                if (scriptTag && scriptTag.parentNode) {
+                    document.body.removeChild(scriptTag);
+                }
+                if (data && data.status) {
+                    updateTimelineUI(data.status);
+                }
+            };
+
+            const scriptTag = document.createElement('script');
+            scriptTag.src = `${GOOGLE_SCRIPT_URL}?orderId=${encodeURIComponent(orderId)}&callback=${callbackName}`;
+            scriptTag.onerror = function() {
+                console.log('Error loading status via JSONP');
+            };
+            document.body.appendChild(scriptTag);
         }
 
-        // تحديث واجهة المراحل بصرياً
+  // 2. دالة تحديث أشكال وألوان مراحل التتبع بصرياً (نسخة واحدة صحيحة ومضبوطة)
         function updateTimelineUI(currentStatus) {
             const stages = ["قيد التأكيد", "التأكيد", "في شركة التوصيل", "التسليم"];
-            let currentIndex = stages.indexOf(currentStatus);
-            if (currentIndex === -1) currentIndex = 0;
+            
+            let currentIndex = stages.indexOf(currentStatus.trim());
+            if (currentIndex === -1) currentIndex = 0; 
 
             const timelineItems = document.querySelectorAll('#tracking-container .space-y-6 > div');
             
@@ -775,7 +777,7 @@
                     if (index <= currentIndex) {
                         if (iconContainer) {
                             iconContainer.className = "w-8 h-8 rounded-full bg-wood-800 text-white flex items-center justify-center font-bold text-xs shrink-0 z-10 shadow-md";
-                            if(index === 3 && currentStatus === "التسليم") {
+                            if(index === 3 && currentStatus.trim() === "التسليم") {
                                 iconContainer.innerHTML = '<i class="fa-solid fa-check"></i>';
                             }
                         }
