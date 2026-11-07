@@ -732,7 +732,7 @@
             }, 10000);
         }
 
-        function checkOrderStatus(orderId) {
+       function checkOrderStatus(orderId) {
             if (!GOOGLE_SCRIPT_URL) return;
 
             const callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
@@ -741,8 +741,18 @@
                 if (scriptTag && scriptTag.parentNode) {
                     document.body.removeChild(scriptTag);
                 }
-                if (data && data.status) {
-                    updateTimelineUI(data.status);
+                if (data) {
+                    // تحديث الحالة في المسار (Timeline)
+                    if (data.status) {
+                        updateTimelineUI(data.status);
+                    }
+                    // تحديث اسم المنتج والمبلغ الإجمالي في واجهة التتبع تلقائياً
+                    if (data.orderName && data.orderName !== "حامل المناشف الخشبي الفاخر") {
+                        document.getElementById('track-order-name').innerText = data.orderName;
+                    }
+                    if (data.totalPrice && data.totalPrice !== "---") {
+                        document.getElementById('track-order-total').innerText = data.totalPrice;
+                    }
                 }
             };
 
