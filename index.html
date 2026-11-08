@@ -45,7 +45,7 @@
     <!-- Google Fonts: Tajawal -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     
-    <script>
+<script>
         tailwind.config = {
             theme: {
                 extend: {
@@ -70,6 +70,40 @@
             }
         }
     </script>
+    <style>
+        /* إضافة قاعدة لترك مسافة أمان تحت الهيدر عند التمرير */
+        html {
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #fdfbf7;
+        }
+        .wood-gradient {
+            background: linear-gradient(135deg, #d4a373 0%, #a3714c 100%);
+        }
+        .wood-light-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #faedcd 100%);
+        }
+        .pulse-subtle {
+            animation: pulse-animation 2s infinite;
+        }
+        @keyframes pulse-animation {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        .offer-card {
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+        }
+        .offer-card.active {
+            border-color: #754b2d !important;
+            background-color: #f7f1e5 !important;
+            box-shadow: 0 4px 12px rgba(117, 75, 45, 0.15);
+        }
+    </style>
     <style>
         body {
             font-family: 'Tajawal', sans-serif;
@@ -877,6 +911,19 @@
                         if (titleEl) titleEl.className = "font-bold text-sm text-gray-400";
                         if (descEl) descEl.className = "text-xs text-gray-400";
                     }
+                });
+            }
+        }
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                const headerOffset = 85; // مسافة الأمان تحت الهيدر
+                const elementPosition = section.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
                 });
             }
         }
