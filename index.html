@@ -915,20 +915,25 @@
             }
         }
         function scrollToSection(sectionId) {
-            // إذا ضغط الزبون على "أطلب الآن"، نقوم بإعادة ضبط الواجهة لعرض الاستمارة وإخفاء شاشة التتبع
+            let targetId = sectionId;
+
+            // إذا كان المطلوب هو الانتقال للاستمارة عبر زر "أطلب الآن"، نقوم بإظهار الاستمارة أولاً
             if (sectionId === 'order-form') {
                 const formContainer = document.getElementById('form-container');
                 const trackingContainer = document.getElementById('tracking-container');
                 const searchSection = document.getElementById('track-search-section');
 
-                if (trackingContainer) trackingContainer.classList.add('hidden'); // إخفاء شاشة التتبع
-                if (formContainer) formContainer.classList.remove('hidden');    // إظهار استمارة الطلب
-                if (searchSection) searchSection.classList.remove('hidden');    // إظهار خانة البحث عن الطلب
+                if (trackingContainer) trackingContainer.classList.add('hidden'); // إخفاء التتبع
+                if (formContainer) formContainer.classList.remove('hidden');    // إظهار الاستمارة
+                if (searchSection) searchSection.classList.remove('hidden');    // إظهار البحث
+
+                // **التعديل الجذري هنا:** اجعل التمرير يستهدف صندوق الاستمارة (form-container) مباشرة وليس القسم العام
+                targetId = 'form-container';
             }
 
-            const section = document.getElementById(sectionId);
+            const section = document.getElementById(targetId);
             if (section) {
-                const headerOffset = 85; // مسافة الأمان تحت الهيدر
+                const headerOffset = 95; // مسافة أمان ممتازة لتظهر الاستمارة تحت الشريط العلوي مباشرة
                 const elementPosition = section.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
