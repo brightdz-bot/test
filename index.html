@@ -487,7 +487,7 @@
             </div>
 
             <div class="space-y-2 pt-1">
-                <p class="text-xs text-gray-500 font-medium">لضمان سرعة معالجة وتأكيد طلبك، اضغط هنا لتأكيده عبر الواتساب:</p>
+                <p class="text-xs text-gray-500 font-medium">اضغط هنا لإرسال تأكيد الطلب عبر الواتساب:</p>
                 <a id="whatsapp-direct-btn" href="#" target="_blank" class="w-full py-3.5 bg-whatsapp hover:bg-emerald-600 text-white font-extrabold rounded-xl transition flex items-center justify-center gap-2 text-sm shadow-md">
                     <i class="fa-brands fa-whatsapp text-lg"></i>
                     <span>تأكيد الطلب الآن عبر واتساب 🟢</span>
@@ -505,9 +505,9 @@
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxypWDAiVUVZkLcm_DbGvsosIKpdWvcbQ5LwdxkoYbcIJzehubIrc00_WlhjY3-bkpq/exec';
         const STORE_WHATSAPP_NUMBER = '213798353165'; 
 
-        // جدول أسعار الشحن الرسمي المحدث والمطابق لجدولك تماماً للـ 58 ولاية
         const shippingRates = {
             "أدرار": { home: 1400, stop: 750 },
+            "الشلف": { home: 600, stop: 400 },
             "الأغواط": { home: 900, stop: 500 },
             "أم البواقي": { home: 900, stop: 500 },
             "باتنة": { home: 800, stop: 400 },
@@ -516,7 +516,6 @@
             "بشار": { home: 1300, stop: 550 },
             "البليدة": { home: 600, stop: 400 },
             "البويرة": { home: 600, stop: 400 },
-            "بومرداس": { home: 600, stop: 400 },
             "تمنراست": { home: 1700, stop: 1050 },
             "تبسة": { home: 700, stop: 450 },
             "تلمسان": { home: 700, stop: 400 },
@@ -542,29 +541,29 @@
             "البيض": { home: 900, stop: 600 },
             "إليزي": { home: 1700, stop: 1050 },
             "برج بوعريريج": { home: 600, stop: 400 },
+            "بومرداس": { home: 600, stop: 400 },
             "الطارف": { home: 600, stop: 400 },
             "تندوف": { home: 1300, stop: 750 },
             "تيسمسيلت": { home: 600, stop: 450 },
-            "تيبازة": { home: 600, stop: 400 },
+            "الوادي": { home: 1000, stop: 600 },
             "خنشلة": { home: 600, stop: 400 },
             "سوق أهراس": { home: 600, stop: 400 },
+            "تيبازة": { home: 600, stop: 400 },
+            "ميلة": { home: 600, stop: 400 },
             "عين الدفلى": { home: 700, stop: 450 },
             "النعامة": { home: 900, stop: 600 },
             "عين تموشنت": { home: 700, stop: 400 },
             "غرداية": { home: 1000, stop: 600 },
             "تيميمون": { home: 1300, stop: 800 },
             "برج باجي مختار": { home: 1300, stop: 1200 },
-            "عين صالح": { home: 1300, stop: 1050 },
-            "جانت": { home: 1300, stop: 1200 },
+            "أولاد جلال": { home: 800, stop: 450 },
             "بني عباس": { home: 1300, stop: 1200 },
+            "عين صالح": { home: 1300, stop: 1050 },
             "عين قزام": { home: 1300, stop: 1050 },
             "تقرت": { home: 1000, stop: 600 },
-            "المنيعة": { home: 1000, stop: 600 },
+            "جانت": { home: 1300, stop: 1200 },
             "المغير": { home: 1000, stop: 600 },
-            "الوادي": { home: 1000, stop: 600 },
-            "أولاد جلال": { home: 800, stop: 450 },
-            "ميلة": { home: 600, stop: 400 },
-            "الشلف": { home: 600, stop: 400 }
+            "المنيعة": { home: 1000, stop: 600 }
         };
 
         const wilayasData = [
@@ -583,7 +582,7 @@
           { code: "13", name: "13 - تلمسان", communes: ["عين فتاح", "عين فزة", "عين غرابة", "عين الكبيرة", "عين النحالة", "عين تالوت", "عين يوسف", "عمير", "العزايل", "باب العسة", "بني بهدل", "بني بوسعيد", "بني خلاد", "بني مستر", "بني وارسوس", "بني صميل", "بني سنوس", "بن سكران", "بوحلو", "البويهي", "شتوان", "دار يغمراسن", "جبالة", "العريشة", "الفحول", "القور", "فلاوسن", "الغزوات", "حمام بوغرارة", "الحناية", "هنين", "مغنية", "منصورة", "مرسى بن مهيدي", "مسيردة الفواقة", "ندرومة", "وادي الخضر", "أولاد ميمون", "أولاد رياح", "الرمشي", "صبرة", "سبعة شيوخ", "سبدو", "سيدي العبدلي", "سيدي الجيلالي", "سيدي مجاهد", "السواحلية", "السواني", "سوق الثلاثاء", "تيرني بني هديل", "تيانت", "تلمسان", "زناتة"] },
           { code: "14", name: "14 - تيارت", communes: ["عين بوشقيف", "عين الذهب", "عين دزاريت", "عين الحديد", "عين كرمس", "بوقرة", "شحيمة", "دحموني", "جبيلات الرصفاء", "جيلالي بن عمار", "الفايجة", "فرندة", "قرطوفة", "حمادية", "قصر الشلالة", "مادنة", "مهدية", "مشرع الصفا", "مدريسة", "مدروسة", "مغيلة", "ملاكو", "الناظورة", "النعيمة", "وادي ليلي", "الرحوية", "الرشايقة", "السبعين", "السبت", "سرغين", "سي عبد الغني", "سيدي عبد الرحمن", "سيدي علي ملال", "سيدي بختي", "سيدي حسني", "السوقر", "تاقدمت", "تخمرت", "تيارت", "تيدة", "توسنينة", "زمالة الأمير عبد القادر"] },
           { code: "15", name: "15 - تيزي وزو", communes: ["أبي يوسف", "أغريب", "أقني قغران", "عين الحمام", "عين الزاوية", "أيت عقـواشة", "أيت بــوادو", "أيت بومهدي", "أيت خليلي", "أيت يحي موسى", "أيت عيسى ميمون", "أيت شافع", "أيت محمود", "أيت أومالو", "أيت تودرت", "أيت يحيى", "اقبيل", "أقرو", "أسي يوسف", "عزازقة", "أزفون", "بنــــي زمنزار", "بني عيسي", "بني دوالة", "بني يني", "بني زيكــي", "بوغني", "بوجيمة", "بونوح", "بوزقــن", "ذراع بن خدة", "ذراع الميزان", "فريحة", "فريقات", "إبودرارن", "إيجــار", "إفــرحــونان", "إيفيغاء", "إفليـــسن", "إيلـيــلتـن", "إيلولة أومـــالو", "إمســوحال", "إيرجـــن", "الأربعــاء ناث إيراثن", "مكيرة", "معـــاتقة", "ماكودة", "مشطراس", "مقــلع", "ميزرانـــة", "واسيف", "واضية", "واقنون", "سيدي نعمان", "صوامـــع", "سوق الإثنين", "تادمايت", "تيقـزيرت", "تيمـيزار", "تيرمتين", "تيزي نثلاثة", "تيزي غنيف", "تيزي وزو", "تيزي راشد", "إعــكورن", "يطــافن", "زكري"] },
-          { code: "16", name: "16 - الجزائر", communes: ["الجزائر الوسطى", "باب الوادي", "سيدي امحمد", "الأبيار", "حيدرة", "بن عكنون", "الشراقة", "دالي إبراهيم", "الدرارية", "بئر مراد رايس", "بئر خادم", "القبة", "الحراش", "باب الزوار", "الدار البيضاء", "الرويبة", "زرالدة", "عين البنيان", "الرغاية", "البرج الكيفان", "الكاليتوس", "براقي", "باش جراح", "المقرية", "المرادية", "بوزريعة", "بني المسوس", "السحاولة", "الخرايسية", "العاشور"] },
+          { code: "16", name: "16 - الجزائر العاصمة", communes: ["الجزائر الوسطى", "باب الوادي", "سيدي امحمد", "الأبيار", "حيدرة", "بن عكنون", "الشراقة", "دالي إبراهيم", "الدرارية", "بئر مراد رايس", "بئر خادم", "القبة", "الحراش", "باب الزوار", "الدار البيضاء", "الرويبة", "زرالدة", "عين البنيان", "الرغاية", "البرج الكيفان", "الكاليتوس", "براقي", "باش جراح", "المقرية", "المرادية", "بوزريعة", "بني المسوس", "السحاولة", "الخرايسية", "العاشور"] },
           { code: "17", name: "17 - الجلفة", communes: ["عين الشهداء", "عين الإبل", "عين فقه", "عين معبد", "عين وسارة", "عمورة", "بنهار", "بن يعقوب", "بيرين", "بويرة الأحداب", "الشارف", "دار الشيوخ", "دلدول", "الجلفة", "دويس", "القديد", "الادريسية", "الخميس", "فيض البطمة", "قرنيني", "قطارة", "حد الصحاري", "حاسي بحبح", "حاسي العش", "حاسي فدول", "مليليحة", "مسعد", "مجبارة", "أم العظام", "سد الرحال", "سلمانة", "سيدي بايزيد", "سيدي لعجال", "تعظميت", "زعفران", "زكار"] },
           { code: "18", name: "18 - جيجل", communes: ["برج الطهر", "بودريعة بني ياجيس", "بوراوي بلهادف", "بوسيف أولاد عسكر", "الشحنة", "الشقفة", "الجمعة بني حبيبي", "جيملة", "العنصر", "العوانة", "القنار نشفي", "الميلية", "الامير عبد القادر", "أراقن سويسي", "غبالة", "جيجل", "قاوس", "خيري واد عجول", "وجانة", "أولاد رابح", "أولاد يحيى خدروش", "سلمى بن زيادة", "السطارة", "سيدي عبد العزيز", "سيدي معروف", "الطاهير", "تاكسنة", "زيامة منصورية"] },
           { code: "19", name: "19 - سطيف", communes: ["عين عباسة", "عين أرنات", "عين أزال", "عين الكبيرة", "عين الحجر", "عين ولمان", "عين لقراج", "عين الروى", "عين السبت", "أيت نوال مزادة", "ايت تيزي", "عموشة", "بابور", "بازر سكرة", "بيضاء برج", "بلاعة", "بني شبانة", "بني فودة", "بني ورتيلان", "بني وسين", "بني عزيز", "بني موحلي", "بئر حدادة", "بئر العرش", "بوعنداس", "بوقاعة", "بوسلام", "بوطالب", "الدهامشة", "جميلة", "ذراع قبيلة", "العلمة", "أوريسيا", "الولجة", "قلال", "قلتة زرقاء", "قنزات", "قجال", "حمام السخنة", "الحامة", "حمام قرقور", "حربيل", "قصر الابطال", "معاوية", "ماوكلان", "مزلوق", "واد البارد", "أولاد عدوان", "أولاد صابر", "أولاد سي أحمد", "أولاد تبان", "الرصفة", "صالح باي", "سرج الغول", "سطيف", "تاشودة", "تالة إيفاسن", "الطاية", "التلة", "تيزي نبشار"] },
@@ -675,7 +674,7 @@
             const shippingType = document.querySelector('input[name="shipping-type"]:checked').value;
             
             let cleanWilaya = wilayaSelect.replace(/^\d+\s*-\s*/, '').trim();
-            if (cleanWilaya.startsWith('الجزائر')) cleanWilaya = 'الجزائر';
+            if (cleanWilaya.startsWith('الجزائر')) cleanWilaya = 'الجزائر العاصمة';
 
             if (shippingRates[cleanWilaya]) {
                 currentShippingCost = shippingRates[cleanWilaya][shippingType] || 0;
@@ -688,22 +687,18 @@
 
         function changeImage(buttonEl, imageUrl) {
             document.getElementById('main-product-img').src = imageUrl;
-            
             const thumbs = document.querySelectorAll('.thumb-btn');
             thumbs.forEach(btn => {
                 btn.classList.remove('border-wood-700');
                 btn.classList.add('border-transparent');
             });
-            
             buttonEl.classList.remove('border-transparent');
             buttonEl.classList.add('border-wood-700');
         }
 
         function selectOffer(packId, price) {
             const bundleSelect = document.getElementById('bundle-select');
-            if (bundleSelect) {
-                bundleSelect.value = packId;
-            }
+            if (bundleSelect) bundleSelect.value = packId;
             
             ['pack1', 'pack2', 'pack4'].forEach(id => {
                 const card = document.getElementById('card-' + id);
@@ -789,15 +784,15 @@
             const submitBtn = document.getElementById('submit-btn');
             if (submitBtn.disabled) return;
 
-            const fullName = document.getElementById('fullname').value;
-            const phone = document.getElementById('phone').value;
+            const fullName = document.getElementById('fullname').value.trim();
+            const phone = document.getElementById('phone').value.trim();
             const wilaya = document.getElementById('wilaya-select').value;
             const commune = document.getElementById('commune-select').value;
             const shippingTypeVal = document.querySelector('input[name="shipping-type"]:checked').value;
             const shippingTypeText = shippingTypeVal === 'home' ? 'توصيل للمنزل 🏠' : 'مكتب الشحن Stop Desk 🏢';
             
             let grandTotalNum = currentPrice + currentShippingCost;
-            const totalText = grandTotalNum.toLocaleString() + ' دج (شامل التوصيل)';
+            const totalText = grandTotalNum.toLocaleString() + ' دج';
 
             if (!commune) {
                 alert("يرجى اختيار البلدية");
@@ -815,23 +810,22 @@
             if (bundleVal === 'pack4') quantity = "4";
 
             const orderId = "ORD-" + Math.floor(Math.random() * 899999 + 100000);
-            const fullOrderDetails = currentBundleName + ' (الكمية: ' + quantity + ') - التوصيل: ' + shippingTypeText;
+            const fullOrderDetails = currentBundleName + ' (الكمية: ' + quantity + ')';
             const orderStatus = "قيد التأكيد";
 
             document.getElementById('modal-order-id').innerText = orderId;
             document.getElementById('modal-order-name').innerText = fullOrderDetails;
 
+            // بناء رسالة الواتساب الأولى الدقيقة كما طلبتها
             const customWhatsAppMsg = encodeURIComponent(
-                `السلام عليكم متجر Bright DZ 🪵\n` +
-                `أود تأكيد طلبي الجديد:\n\n` +
-                `📦 رقم الطلب: ${orderId}\n` +
-                `👤 الاسم: ${fullName}\n` +
-                `📞 الهاتف: ${phone}\n` +
-                `📍 العنوان: ${wilaya} - ${commune}\n` +
-                `🚚 نوع التوصيل: ${shippingTypeText} (${currentShippingCost} دج)\n` +
-                `🛍️ المنتج: ${fullOrderDetails}\n` +
-                `💰 المبلغ الإجمالي: ${totalText}\n\n` +
-                `أرجو تأكيد الطلب وشكراً!`
+                `السلام ${fullName}،\n` +
+                `وصلتنا طلبيتك من متجر Bright DZ.\n` +
+                `المنتج: ${fullOrderDetails}\n` +
+                `المبلغ: ${totalText} (الدفع عند الاستلام)\n` +
+                `التوصيل إلى: ${wilaya} - ${commune} (${shippingTypeText})\n` +
+                `باش نبعثوها، أكّد الطلب بالزر لتحت.\n` +
+                `لأي سؤال، كلّمنا على WhatsApp في الرقم 0798353165.\n` +
+                `شكراً على ثقتك.`
             );
             
             document.getElementById('whatsapp-direct-btn').href = `https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${customWhatsAppMsg}`;
@@ -839,7 +833,9 @@
             window.lastOrderData = {
                 orderId: orderId,
                 orderName: fullOrderDetails,
-                total: totalText
+                total: totalText,
+                shippingInfo: `${wilaya} - ${commune} (${shippingTypeText})`,
+                fullName: fullName
             };
 
             if (GOOGLE_SCRIPT_URL) {
@@ -847,8 +843,9 @@
                 formData.append('orderId', orderId);
                 formData.append('fullName', fullName);
                 formData.append('phone', phone);
-                formData.append('wilaya', wilaya + ' (' + shippingTypeText + ')');
+                formData.append('wilaya', wilaya);
                 formData.append('commune', commune);
+                formData.append('shippingType', shippingTypeText); // إرسال خانة طريقة التوصيل بوضوح للشيت
                 formData.append('order', fullOrderDetails);
                 formData.append('status', orderStatus);
                 formData.append('totalPrice', totalText);
@@ -875,7 +872,7 @@
             }
 
             if (window.lastOrderData) {
-                showTrackingView(window.lastOrderData.orderId, window.lastOrderData.orderName, window.lastOrderData.total);
+                showTrackingView(window.lastOrderData.orderId, window.lastOrderData.orderName, window.lastOrderData.total, window.lastOrderData.shippingInfo, window.lastOrderData.fullName);
             }
         }
 
@@ -886,18 +883,14 @@
                 return;
             }
 
-            showTrackingView(inputVal, 'جاري جلب تفاصيل المنتج...', '---');
+            showTrackingView(inputVal, 'جاري جلب تفاصيل المنتج...', '---', '---', 'الزبون');
             checkOrderStatus(inputVal);
         }
 
-        function showTrackingView(orderId, orderName, totalText) {
+        function showTrackingView(orderId, orderName, totalText, shippingInfo, customerName) {
             document.getElementById('track-order-id').innerText = orderId;
             document.getElementById('track-order-name').innerText = orderName;
             document.getElementById('track-order-total').innerText = totalText;
-
-            const whatsappMsg = encodeURIComponent(`مرحباً Bright DZ، أود الاستفسار ومتابعة حالة طلبي رقم: ${orderId}`);
-            const whatsappLink = `https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${whatsappMsg}`;
-            document.getElementById('whatsapp-track-btn').href = whatsappLink;
 
             const formContainer = document.getElementById('form-container');
             const trackingContainer = document.getElementById('tracking-container');
@@ -909,14 +902,14 @@
 
             trackingContainer.scrollIntoView({ behavior: 'smooth' });
 
-            checkOrderStatus(orderId);
+            checkOrderStatus(orderId, customerName, orderName, totalText);
             if (window.statusInterval) clearInterval(window.statusInterval);
             window.statusInterval = setInterval(() => {
-                checkOrderStatus(orderId);
+                checkOrderStatus(orderId, customerName, orderName, totalText);
             }, 10000);
         }
 
-        function checkOrderStatus(orderId) {
+        function checkOrderStatus(orderId, customerName, orderName, totalText) {
             if (!GOOGLE_SCRIPT_URL) return;
 
             const callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
@@ -927,7 +920,7 @@
                 }
                 if (data) {
                     if (data.status) {
-                        updateTimelineUI(data.status);
+                        updateTimelineUI(data.status, data.trackingCode, customerName, orderName, totalText);
                     }
                     if (data.orderName && data.orderName !== "حامل المناشف الخشبي الفاخر") {
                         document.getElementById('track-order-name').innerText = data.orderName;
@@ -946,10 +939,10 @@
             document.body.appendChild(scriptTag);
         }
 
-        function updateTimelineUI(currentStatus) {
+        function updateTimelineUI(currentStatus, trackingCode, customerName, orderName, totalText) {
             const stages = ["قيد التأكيد", "التأكيد", "في شركة التوصيل", "التسليم"];
-            
-            let currentIndex = stages.indexOf(currentStatus.trim());
+            let cleanStatus = currentStatus.trim();
+            let currentIndex = stages.indexOf(cleanStatus);
             if (currentIndex === -1) currentIndex = 0; 
 
             const timelineItems = document.querySelectorAll('#tracking-container .space-y-6 > div');
@@ -963,7 +956,7 @@
                     if (index <= currentIndex) {
                         if (iconContainer) {
                             iconContainer.className = "w-8 h-8 rounded-full bg-wood-800 text-white flex items-center justify-center font-bold text-xs shrink-0 z-10 shadow-md";
-                            if(index === 3 && currentStatus.trim() === "التسليم") {
+                            if(index === 3 && cleanStatus === "التسليم") {
                                 iconContainer.innerHTML = '<i class="fa-solid fa-check"></i>';
                             }
                         }
@@ -978,11 +971,35 @@
                     }
                 });
             }
+
+            // ضبط زر الواتساب في صفحة التتبع بحسب الحالة (إذا أصبحت في شركة التوصيل تظهر رسالة التوصيل التي طلبتها)
+            const whatsappTrackBtn = document.getElementById('whatsapp-track-btn');
+            if (whatsappTrackBtn) {
+                let nameToUse = customerName || 'الزبون الكريم';
+                let prodToUse = orderName || 'حامل المناشف الخشبي الفاخر';
+                let totalToUse = totalText || '2,300 دج';
+                let codeToUse = trackingCode || '28-H8G9NDFX0V-ZR';
+
+                let trackingMsg = '';
+                if (cleanStatus === 'في شركة التوصيل') {
+                    // الصيغة الدقيقة التي طلبتها عندما تخرج مع عامل التوصيل
+                    trackingMsg = encodeURIComponent(
+                        `مرحباً ${nameToUse}،\n` +
+                        `طلبيتك من Bright DZ خرجت مع عامل التوصيل وراهي في الطريق ليك.\n` +
+                        `المنتج: ${prodToUse}\n` +
+                        `وهنا الرمز الذي يخرج من منصه شركه التوصيل مثال ${codeToUse}\n` +
+                        `حضّر المبلغ ${totalToUse} وخلّي تيليفونك مفتوح باش يتصل بيك عامل التوصيل.\n` +
+                        `شكرا.`
+                    );
+                } else {
+                    trackingMsg = encodeURIComponent(`مرحباً Bright DZ، أود الاستفسار ومتابعة حالة طلبي.`);
+                }
+                whatsappTrackBtn.href = `https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${trackingMsg}`;
+            }
         }
 
         function scrollToSection(sectionId) {
             let targetId = sectionId;
-
             if (sectionId === 'order-form') {
                 const formContainer = document.getElementById('form-container');
                 const trackingContainer = document.getElementById('tracking-container');
@@ -991,7 +1008,6 @@
                 if (trackingContainer) trackingContainer.classList.add('hidden'); 
                 if (formContainer) formContainer.classList.remove('hidden');    
                 if (searchSection) searchSection.classList.remove('hidden');    
-
                 targetId = 'form-container';
             }
 
