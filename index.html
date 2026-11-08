@@ -8,7 +8,7 @@
     <!-- FAVICON -->
     <link rel="icon" type="image/png" href="https://img.sanishtech.com/u/aa5ef9a99584523a1ccc59f8ed1ea9ed.png">
 
-    <!-- Meta Pixel Code (Facebook Pixel) -->
+    <!-- Meta Pixel Code -->
     <script>
       !function(f,b,e,v,n,t,s)
       {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -20,7 +20,6 @@
       'https://connect.facebook.net/en_US/fbevents.js');
       
       var YOUR_PIXEL_ID = '1130382356394829'; 
-      
       if(YOUR_PIXEL_ID && YOUR_PIXEL_ID !== 'YOUR_PIXEL_ID_HERE') {
         fbq('init', YOUR_PIXEL_ID);
         fbq('track', 'PageView');
@@ -71,36 +70,18 @@
         }
     </script>
     <style>
-        html {
-            scroll-padding-top: 90px;
-        }
-        body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: #fdfbf7;
-        }
-        .wood-gradient {
-            background: linear-gradient(135deg, #d4a373 0%, #a3714c 100%);
-        }
-        .wood-light-gradient {
-            background: linear-gradient(135deg, #ffffff 0%, #faedcd 100%);
-        }
-        .pulse-subtle {
-            animation: pulse-animation 2s infinite;
-        }
+        html { scroll-padding-top: 90px; }
+        body { font-family: 'Tajawal', sans-serif; background-color: #fdfbf7; }
+        .wood-gradient { background: linear-gradient(135deg, #d4a373 0%, #a3714c 100%); }
+        .wood-light-gradient { background: linear-gradient(135deg, #ffffff 0%, #faedcd 100%); }
+        .pulse-subtle { animation: pulse-animation 2s infinite; }
         @keyframes pulse-animation {
             0% { transform: scale(1); }
             50% { transform: scale(1.02); }
             100% { transform: scale(1); }
         }
-        .offer-card {
-            transition: all 0.2s ease-in-out;
-            cursor: pointer;
-        }
-        .offer-card.active {
-            border-color: #754b2d !important;
-            background-color: #f7f1e5 !important;
-            box-shadow: 0 4px 12px rgba(117, 75, 45, 0.15);
-        }
+        .offer-card { transition: all 0.2s ease-in-out; cursor: pointer; }
+        .offer-card.active { border-color: #754b2d !important; background-color: #f7f1e5 !important; box-shadow: 0 4px 12px rgba(117, 75, 45, 0.15); }
     </style>
 </head>
 <body class="text-gray-800 antialiased selection:bg-wood-200 selection:text-wood-900">
@@ -327,7 +308,7 @@
                         </div>
                     </div>
 
-                    <!-- خيار نوع التوصيل (المنزل أو Stop Desk) -->
+                    <!-- خيار نوع التوصيل -->
                     <div>
                         <label class="block text-xs font-bold text-gray-700 mb-2">طريقة التوصيل <span class="text-red-500">*</span></label>
                         <div class="grid grid-cols-2 gap-3">
@@ -487,22 +468,17 @@
             </div>
 
             <div class="space-y-2 pt-1">
-                <p class="text-xs text-gray-500 font-medium">اضغط هنا لإرسال تأكيد الطلب عبر الواتساب:</p>
-                <a id="whatsapp-direct-btn" href="#" target="_blank" class="w-full py-3.5 bg-whatsapp hover:bg-emerald-600 text-white font-extrabold rounded-xl transition flex items-center justify-center gap-2 text-sm shadow-md">
-                    <i class="fa-brands fa-whatsapp text-lg"></i>
-                    <span>تأكيد الطلب الآن عبر واتساب 🟢</span>
-                </a>
+                <p class="text-xs text-gray-500 font-medium">اضغط هنا للانتقال لمتابعة التتبع:</p>
+                <button onclick="closeModalToTracking()" class="w-full py-3.5 bg-wood-800 hover:bg-wood-900 text-white font-extrabold rounded-xl transition flex items-center justify-center gap-2 text-sm shadow-md">
+                    <span>الانتقال لمتابعة مراحل التتبع 🚀</span>
+                </button>
             </div>
-
-            <button onclick="closeModalToTracking()" class="w-full py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-xl transition text-sm">
-                الانتقال لمتابعة مراحل التتبع
-            </button>
         </div>
     </div>
 
     <!-- Scripts -->
     <script>
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzrrS9jMpb39s3OZLNaAutpbAdK_C9-HAjDkoNvyO28_XzVLozK638tSO6aPSd_8mHy/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxypWDAiVUVZkLcm_DbGvsosIKpdWvcbQ5LwdxkoYbcIJzehubIrc00_WlhjY3-bkpq/exec';
         const STORE_WHATSAPP_NUMBER = '213798353165'; 
 
         const shippingRates = {
@@ -816,20 +792,7 @@
             document.getElementById('modal-order-id').innerText = orderId;
             document.getElementById('modal-order-name').innerText = fullOrderDetails;
 
-            // بناء رسالة الواتساب الأولى الدقيقة كما طلبتها
-            const customWhatsAppMsg = encodeURIComponent(
-                `السلام ${fullName}،\n` +
-                `وصلتنا طلبيتك من متجر Bright DZ.\n` +
-                `المنتج: ${fullOrderDetails}\n` +
-                `المبلغ: ${totalText} (الدفع عند الاستلام)\n` +
-                `التوصيل إلى: ${wilaya} - ${commune} (${shippingTypeText})\n` +
-                `باش نبعثوها، أكّد الطلب بالزر لتحت.\n` +
-                `لأي سؤال، كلّمنا على WhatsApp في الرقم 0798353165.\n` +
-                `شكراً على ثقتك.`
-            );
-            
-            document.getElementById('whatsapp-direct-btn').href = `https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${customWhatsAppMsg}`;
-
+            // تخزين البيانات مؤقتاً لعرضها في صفحة التتبع
             window.lastOrderData = {
                 orderId: orderId,
                 orderName: fullOrderDetails,
@@ -838,6 +801,7 @@
                 fullName: fullName
             };
 
+            // إرسال البيانات إلى Google Sheet (مبلغ التوصيل منفصل ومبلغ البضاعة منفصل)
             if (GOOGLE_SCRIPT_URL) {
                 const formData = new URLSearchParams();
                 formData.append('orderId', orderId);
@@ -904,14 +868,14 @@
 
             trackingContainer.scrollIntoView({ behavior: 'smooth' });
 
-            checkOrderStatus(orderId, customerName, orderName, totalText);
+            checkOrderStatus(orderId, customerName, orderName, totalText, shippingInfo);
             if (window.statusInterval) clearInterval(window.statusInterval);
             window.statusInterval = setInterval(() => {
-                checkOrderStatus(orderId, customerName, orderName, totalText);
+                checkOrderStatus(orderId, customerName, orderName, totalText, shippingInfo);
             }, 10000);
         }
 
-        function checkOrderStatus(orderId, customerName, orderName, totalText) {
+        function checkOrderStatus(orderId, customerName, orderName, totalText, shippingInfo) {
             if (!GOOGLE_SCRIPT_URL) return;
 
             const callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
@@ -922,7 +886,7 @@
                 }
                 if (data) {
                     if (data.status) {
-                        updateTimelineUI(data.status, data.trackingCode, customerName, orderName, totalText);
+                        updateTimelineUI(data.status, data.trackingCode, customerName, orderName, totalText, shippingInfo);
                     }
                     if (data.orderName && data.orderName !== "حامل المناشف الخشبي الفاخر") {
                         document.getElementById('track-order-name').innerText = data.orderName;
@@ -941,7 +905,7 @@
             document.body.appendChild(scriptTag);
         }
 
-        function updateTimelineUI(currentStatus, trackingCode, customerName, orderName, totalText) {
+        function updateTimelineUI(currentStatus, trackingCode, customerName, orderName, totalText, shippingInfo) {
             const stages = ["قيد التأكيد", "التأكيد", "في شركة التوصيل", "التسليم"];
             let cleanStatus = currentStatus.trim();
             let currentIndex = stages.indexOf(cleanStatus);
@@ -974,17 +938,31 @@
                 });
             }
 
-            // ضبط زر الواتساب في صفحة التتبع بحسب الحالة (إذا أصبحت في شركة التوصيل تظهر رسالة التوصيل التي طلبتها)
+            // ضبط زر الواتساب في صفحة التتبع بحسب الحالة
             const whatsappTrackBtn = document.getElementById('whatsapp-track-btn');
             if (whatsappTrackBtn) {
-                let nameToUse = customerName || 'الزبون الكريم';
+                let nameToUse = customerName || 'الزبون';
                 let prodToUse = orderName || 'حامل المناشف الخشبي الفاخر';
                 let totalToUse = totalText || '2,300 دج';
+                let placeToUse = shippingInfo || 'الولاية';
                 let codeToUse = trackingCode || '28-H8G9NDFX0V-ZR';
 
                 let trackingMsg = '';
-                if (cleanStatus === 'في شركة التوصيل') {
-                    // الصيغة الدقيقة التي طلبتها عندما تخرج مع عامل التوصيل
+                
+                if (cleanStatus === 'قيد التأكيد') {
+                    // رسالة الواتساب الأولى التي طلبتها تماماً
+                    trackingMsg = encodeURIComponent(
+                        `السلام ${nameToUse}،\n` +
+                        `وصلتنا طلبيتك من متجر Bright DZ.\n` +
+                        `المنتج: ${prodToUse}\n` +
+                        `المبلغ: ${totalToUse} (الدفع عند الاستلام)\n` +
+                        `التوصيل إلى: ${placeToUse}\n` +
+                        `باش نبعثوها، أكّد الطلب بالزر لتحت.\n` +
+                        `لأي سؤال، كلّمنا على WhatsApp في الرقم 0798353165.\n` +
+                        `شكراً على ثقتك.`
+                    );
+                } else if (cleanStatus === 'في شركة التوصيل') {
+                    // رسالة خروج الطلبية مع عامل التوصيل ورمز التتبع
                     trackingMsg = encodeURIComponent(
                         `مرحباً ${nameToUse}،\n` +
                         `طلبيتك من Bright DZ خرجت مع عامل التوصيل وراهي في الطريق ليك.\n` +
@@ -994,7 +972,7 @@
                         `شكرا.`
                     );
                 } else {
-                    trackingMsg = encodeURIComponent(`مرحباً Bright DZ، أود الاستفسار ومتابعة حالة طلبي.`);
+                    trackingMsg = encodeURIComponent(`مرحباً Bright DZ، أود الاستفسار ومتابعة حالة طلبي رقم: ${orderId}`);
                 }
                 whatsappTrackBtn.href = `https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${trackingMsg}`;
             }
