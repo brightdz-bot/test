@@ -318,7 +318,7 @@
                                 <span class="text-xs font-bold text-wood-900">توصيل للمنزل 🏠</span>
                             </label>
                             <label class="flex items-center gap-2 p-3 rounded-xl border-2 border-wood-200 bg-white cursor-pointer hover:border-wood-700 transition">
-                                <input type="radio" name="shipping-type" value="stopdesk" onchange="updateShippingCost()" class="text-wood-800 focus:ring-wood-700">
+                                <input type="radio" name="shipping-type" value="stop" onchange="updateShippingCost()" class="text-wood-800 focus:ring-wood-700">
                                 <span class="text-xs font-bold text-wood-900">مكتب الشحن (Stop Desk) 🏢</span>
                             </label>
                         </div>
@@ -653,13 +653,14 @@
 
         function updateShippingCost() {
             const wilayaSelect = document.getElementById('wilaya-select').value;
-            const shippingType = document.querySelector('input[name="shipping-type"]:checked').value;
+            const shippingTypeElement = document.querySelector('input[name="shipping-type"]:checked');
+            const shippingType = shippingTypeElement ? shippingTypeElement.value : 'home';
             
             let cleanWilaya = wilayaSelect.replace(/^\d+\s*-\s*/, '').trim();
             if (cleanWilaya.startsWith('الجزائر')) cleanWilaya = 'الجزائر العاصمة';
 
             if (shippingRates[cleanWilaya]) {
-                currentShippingCost = shippingRates[cleanWilaya][shippingType] || 600;
+                currentShippingCost = shippingRates[cleanWilaya][shippingType] || (shippingType === 'home' ? 600 : 400);
             } else {
                 currentShippingCost = shippingType === 'home' ? 800 : 500; 
             }
@@ -770,7 +771,8 @@
             const phone = document.getElementById('phone').value.trim();
             const wilaya = document.getElementById('wilaya-select').value;
             const commune = document.getElementById('commune-select').value;
-            const shippingTypeVal = document.querySelector('input[name="shipping-type"]:checked').value;
+            const shippingTypeElement = document.querySelector('input[name="shipping-type"]:checked');
+            const shippingTypeVal = shippingTypeElement ? shippingTypeElement.value : 'home';
             const shippingTypeText = shippingTypeVal === 'home' ? 'توصيل للمنزل 🏠' : 'مكتب الشحن Stop Desk 🏢';
             
             let grandTotalNum = currentPrice + currentShippingCost;
@@ -802,8 +804,10 @@
                 `السلام ${fullName}،\n` +
                 `وصلتنا طلبيتك من متجر Bright DZ.\n` +
                 `المنتج: ${fullOrderDetails}\n` +
-                `المبلغ: ${totalText} (الدفع عند الاستلام)\n` +
-                `التوصيل إلى: ${wilaya} - ${commune} (${shippingTypeText})\n` +
+                `طريقة التوصيل: ${shippingTypeText}\n` +
+                `تكلفة التوصيل: ${currentShippingCost.toLocaleString()} دج\n` +
+                `المبلغ الإجمالي: ${totalText} (الدفع عند الاستلام)\n` +
+                `العنوان: ${wilaya} - ${commune}\n` +
                 `باش نبعثوها، أكّد الطلب بالزر لتحت.\n` +
                 `لأي سؤال، كلّمنا على WhatsApp في الرقم 0798353165.\n` +
                 `شكراً على ثقتك.`
@@ -829,8 +833,8 @@
                 formData.append('shippingType', shippingTypeText);
                 formData.append('order', fullOrderDetails);
                 formData.append('status', orderStatus);
-                formData.append('shippingCost', currentShippingCost); // مبلغ التوصيل لوحده
-                formData.append('productPrice', currentPrice);         // مبلغ البضاعة لوحده
+                formData.append('shippingCost', currentShippingCost); 
+                formData.append('productPrice', currentPrice);         
                 formData.append('totalPrice', totalText);
 
                 fetch(GOOGLE_SCRIPT_URL, {
