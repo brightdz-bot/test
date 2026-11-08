@@ -45,7 +45,7 @@
     <!-- Google Fonts: Tajawal -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     
-<script>
+    <script>
         tailwind.config = {
             theme: {
                 extend: {
@@ -71,11 +71,9 @@
         }
     </script>
     <style>
-        /* إضافة قاعدة لترك مسافة أمان تحت الهيدر عند التمرير */
         html {
             scroll-padding-top: 90px;
         }
-
         body {
             font-family: 'Tajawal', sans-serif;
             background-color: #fdfbf7;
@@ -137,7 +135,7 @@
         </div>
     </header>
 
-  <!-- Hero Section -->
+    <!-- Hero Section -->
     <section class="relative pt-6 pb-12 overflow-hidden">
         <div class="max-w-6xl mx-auto px-4">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -146,13 +144,12 @@
                 <div class="space-y-4">
                     <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-white w-full h-[380px] sm:h-[450px]">
                         <span class="absolute top-4 right-4 z-10 bg-brandRed text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1">
-                            <i class="fa-solid fa-fire"></i> 
+                            <i class="fa-solid fa-fire"></i> الأكثر طلباً
                         </span>
-                        <!-- الصورة الكبيرة الافتتاحية تملأ الإطار بالكامل -->
                         <img id="main-product-img" src="https://scontent.faae2-3.fna.fbcdn.net/v/t39.30808-6/891645324_2341177369970489_6005702391524640935_n.jpg?stp=dst-jpg_tt6&cstp=mx1254x1254&ctp=p526x296&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHdhaOT53EvVVuN9NaumDPny-pDc-qqsNzL6kNz6qqw3P_mVw5CayByftgunnY2ckgD-i9wvTT-MReTbSfqTiyv&_nc_ohc=E8fC4sMyOfoQ7kNvwElkwPD&_nc_oc=AdobGh5OBUdUwbVuvv0dctISmPFkouHTdJ-rq3V-9B5K483gdr-5UKA9sIQWP_U7rSM&_nc_zt=23&_nc_ht=scontent.faae2-3.fna&_nc_gid=z5ug3hUCiW643YapprSaWA&_nc_ss=7b2a8&oh=00_AQRYCIm-Gtx5SbJvWycYJ1VdSQxtDEVkoyhdHUkCGsUkuw&oe=6AF573F7" class="w-full h-full object-cover">
                     </div>
                     
-                    <!-- Thumbnails (الصور المصغرة مع تفعيل التغيير والتحديد) -->
+                    <!-- Thumbnails -->
                     <div class="grid grid-cols-4 gap-2">
                         <button type="button" onclick="changeImage(this, 'https://scontent.faae2-3.fna.fbcdn.net/v/t39.30808-6/891645324_2341177369970489_6005702391524640935_n.jpg?stp=dst-jpg_tt6&cstp=mx1254x1254&ctp=p526x296&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHdhaOT53EvVVuN9NaumDPny-pDc-qqsNzL6kNz6qqw3P_mVw5CayByftgunnY2ckgD-i9wvTT-MReTbSfqTiyv&_nc_ohc=E8fC4sMyOfoQ7kNvwElkwPD&_nc_oc=AdobGh5OBUdUwbVuvv0dctISmPFkouHTdJ-rq3V-9B5K483gdr-5UKA9sIQWP_U7rSM&_nc_zt=23&_nc_ht=scontent.faae2-3.fna&_nc_gid=z5ug3hUCiW643YapprSaWA&_nc_ss=7b2a8&oh=00_AQRYCIm-Gtx5SbJvWycYJ1VdSQxtDEVkoyhdHUkCGsUkuw&oe=6AF573F7')" class="thumb-btn border-4 border-wood-700 rounded-xl overflow-hidden bg-white shadow-sm focus:outline-none transition">
                             <img src="https://scontent.faae2-3.fna.fbcdn.net/v/t39.30808-6/891645324_2341177369970489_6005702391524640935_n.jpg?stp=dst-jpg_tt6&cstp=mx1254x1254&ctp=p526x296&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHdhaOT53EvVVuN9NaumDPny-pDc-qqsNzL6kNz6qqw3P_mVw5CayByftgunnY2ckgD-i9wvTT-MReTbSfqTiyv&_nc_ohc=E8fC4sMyOfoQ7kNvwElkwPD&_nc_oc=AdobGh5OBUdUwbVuvv0dctISmPFkouHTdJ-rq3V-9B5K483gdr-5UKA9sIQWP_U7rSM&_nc_zt=23&_nc_ht=scontent.faae2-3.fna&_nc_gid=z5ug3hUCiW643YapprSaWA&_nc_ss=7b2a8&oh=00_AQRYCIm-Gtx5SbJvWycYJ1VdSQxtDEVkoyhdHUkCGsUkuw&oe=6AF573F7" class="w-full h-16 object-cover" alt="الصورة الرئيسية">
@@ -179,7 +176,6 @@
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                         </div>
-                       
                     </div>
 
                     <h1 class="text-2xl sm:text-3xl font-extrabold text-wood-900 leading-tight">
@@ -190,7 +186,7 @@
                         أضف لمسة جمالية وعصرية لحمامك أو مطبخك! مشبك تثبيت فريد مصنوع من الخشب الطبيعي المحمي ضد الرطوبة بدون ثقب الجدران.
                     </p>
 
-                    <!-- بطاقات العروض التفاعلية (Offer Cards) -->
+                    <!-- بطاقات العروض التفاعلية -->
                     <div class="space-y-2 pt-1">
                         <label class="block text-xs font-bold text-gray-700">اختر العرض المناسب لك:</label>
                         
@@ -506,13 +502,12 @@
 
     <!-- Scripts -->
     <script>
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzlBzK_YliccqGZbsE25YTnsfC82OaqpBHupKMddx12ay8Te87OfZBQloikl5xBAfzv/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxypWDAiVUVZkLcm_DbGvsosIKpdWvcbQ5LwdxkoYbcIJzehubIrc00_WlhjY3-bkpq/exec';
         const STORE_WHATSAPP_NUMBER = '213798353165'; 
 
-        // جدول أسعار الشحن الرسمي للـ 58 ولاية (منزل / Stop Desk)
+        // جدول أسعار الشحن الرسمي المحدث والمطابق لجدولك تماماً للـ 58 ولاية
         const shippingRates = {
             "أدرار": { home: 1400, stop: 750 },
-            "الشلف": { home: 600, stop: 400 },
             "الأغواط": { home: 900, stop: 500 },
             "أم البواقي": { home: 900, stop: 500 },
             "باتنة": { home: 800, stop: 400 },
@@ -521,54 +516,55 @@
             "بشار": { home: 1300, stop: 550 },
             "البليدة": { home: 600, stop: 400 },
             "البويرة": { home: 600, stop: 400 },
+            "بومرداس": { home: 600, stop: 400 },
             "تمنراست": { home: 1700, stop: 1050 },
             "تبسة": { home: 700, stop: 450 },
-            "تلمسان": { home: 700, stop: 400 }, // متوسط البديل (400/450)
+            "تلمسان": { home: 700, stop: 400 },
             "تيارت": { home: 700, stop: 400 },
             "تيزي وزو": { home: 600, stop: 400 },
+            "الجزائر": { home: 600, stop: 400 },
             "الجزائر العاصمة": { home: 600, stop: 400 },
             "الجلفة": { home: 600, stop: 400 },
             "جيجل": { home: 600, stop: 400 },
             "سطيف": { home: 600, stop: 400 },
             "سعيدة": { home: 700, stop: 450 },
             "سكيكدة": { home: 600, stop: 400 },
-            "سيدي بلعباس": { home: 700, stop: 400 },
+            "سيدي بلعباس": { home: 600, stop: 400 },
             "عنابة": { home: 600, stop: 400 },
-            "قالمة": { home: 700, stop: 450 },
+            "قالمة": { home: 600, stop: 400 },
             "قسنطينة": { home: 600, stop: 400 },
             "المدية": { home: 600, stop: 400 },
-            "مستغانم": { home: 700, stop: 400 },
-            "المسيلة": { home: 800, stop: 450 },
-            "معسكر": { home: 700, stop: 400 },
+            "مستغانم": { home: 700, stop: 450 },
+            "المسيلة": { home: 600, stop: 400 },
+            "معسكر": { home: 700, stop: 450 },
             "ورقلة": { home: 1000, stop: 600 },
             "وهران": { home: 700, stop: 450 },
-            "البيض": { home: 1100, stop: 600 },
+            "البيض": { home: 900, stop: 600 },
             "إليزي": { home: 1700, stop: 1050 },
             "برج بوعريريج": { home: 600, stop: 400 },
-            "بومرداس": { home: 600, stop: 400 },
-            "الطارف": { home: 700, stop: 450 },
+            "الطارف": { home: 600, stop: 400 },
             "تندوف": { home: 1300, stop: 750 },
-            "تسمسيلت": { home: 700, stop: 400 },
-            "الوادي": { home: 1000, stop: 600 },
-            "خنشلة": { home: 800, stop: 450 },
-            "سوق أهراس": { home: 700, stop: 450 },
+            "تيسمسيلت": { home: 600, stop: 450 },
             "تيبازة": { home: 600, stop: 400 },
-            "ميلة": { home: 600, stop: 400 },
-            "عين الدفلى": { home: 600, stop: 400 },
-            "النعامة": { home: 1100, stop: 600 },
+            "خنشلة": { home: 600, stop: 400 },
+            "سوق أهراس": { home: 600, stop: 400 },
+            "عين الدفلى": { home: 700, stop: 450 },
+            "النعامة": { home: 900, stop: 600 },
             "عين تموشنت": { home: 700, stop: 400 },
             "غرداية": { home: 1000, stop: 600 },
-            "غليزان": { home: 700, stop: 400 },
             "تيميمون": { home: 1300, stop: 800 },
             "برج باجي مختار": { home: 1300, stop: 1200 },
-            "أولاد جلال": { home: 800, stop: 450 },
-            "بني عباس": { home: 1300, stop: 1200 },
             "عين صالح": { home: 1300, stop: 1050 },
+            "جانت": { home: 1300, stop: 1200 },
+            "بني عباس": { home: 1300, stop: 1200 },
             "عين قزام": { home: 1300, stop: 1050 },
             "تقرت": { home: 1000, stop: 600 },
-            "جانت": { home: 1300, stop: 1200 },
+            "المنيعة": { home: 1000, stop: 600 },
             "المغير": { home: 1000, stop: 600 },
-            "المنيعة": { home: 1000, stop: 600 }
+            "الوادي": { home: 1000, stop: 600 },
+            "أولاد جلال": { home: 800, stop: 450 },
+            "ميلة": { home: 600, stop: 400 },
+            "الشلف": { home: 600, stop: 400 }
         };
 
         const wilayasData = [
@@ -587,7 +583,7 @@
           { code: "13", name: "13 - تلمسان", communes: ["عين فتاح", "عين فزة", "عين غرابة", "عين الكبيرة", "عين النحالة", "عين تالوت", "عين يوسف", "عمير", "العزايل", "باب العسة", "بني بهدل", "بني بوسعيد", "بني خلاد", "بني مستر", "بني وارسوس", "بني صميل", "بني سنوس", "بن سكران", "بوحلو", "البويهي", "شتوان", "دار يغمراسن", "جبالة", "العريشة", "الفحول", "القور", "فلاوسن", "الغزوات", "حمام بوغرارة", "الحناية", "هنين", "مغنية", "منصورة", "مرسى بن مهيدي", "مسيردة الفواقة", "ندرومة", "وادي الخضر", "أولاد ميمون", "أولاد رياح", "الرمشي", "صبرة", "سبعة شيوخ", "سبدو", "سيدي العبدلي", "سيدي الجيلالي", "سيدي مجاهد", "السواحلية", "السواني", "سوق الثلاثاء", "تيرني بني هديل", "تيانت", "تلمسان", "زناتة"] },
           { code: "14", name: "14 - تيارت", communes: ["عين بوشقيف", "عين الذهب", "عين دزاريت", "عين الحديد", "عين كرمس", "بوقرة", "شحيمة", "دحموني", "جبيلات الرصفاء", "جيلالي بن عمار", "الفايجة", "فرندة", "قرطوفة", "حمادية", "قصر الشلالة", "مادنة", "مهدية", "مشرع الصفا", "مدريسة", "مدروسة", "مغيلة", "ملاكو", "الناظورة", "النعيمة", "وادي ليلي", "الرحوية", "الرشايقة", "السبعين", "السبت", "سرغين", "سي عبد الغني", "سيدي عبد الرحمن", "سيدي علي ملال", "سيدي بختي", "سيدي حسني", "السوقر", "تاقدمت", "تخمرت", "تيارت", "تيدة", "توسنينة", "زمالة الأمير عبد القادر"] },
           { code: "15", name: "15 - تيزي وزو", communes: ["أبي يوسف", "أغريب", "أقني قغران", "عين الحمام", "عين الزاوية", "أيت عقـواشة", "أيت بــوادو", "أيت بومهدي", "أيت خليلي", "أيت يحي موسى", "أيت عيسى ميمون", "أيت شافع", "أيت محمود", "أيت أومالو", "أيت تودرت", "أيت يحيى", "اقبيل", "أقرو", "أسي يوسف", "عزازقة", "أزفون", "بنــــي زمنزار", "بني عيسي", "بني دوالة", "بني يني", "بني زيكــي", "بوغني", "بوجيمة", "بونوح", "بوزقــن", "ذراع بن خدة", "ذراع الميزان", "فريحة", "فريقات", "إبودرارن", "إيجــار", "إفــرحــونان", "إيفيغاء", "إفليـــسن", "إيلـيــلتـن", "إيلولة أومـــالو", "إمســوحال", "إيرجـــن", "الأربعــاء ناث إيراثن", "مكيرة", "معـــاتقة", "ماكودة", "مشطراس", "مقــلع", "ميزرانـــة", "واسيف", "واضية", "واقنون", "سيدي نعمان", "صوامـــع", "سوق الإثنين", "تادمايت", "تيقـزيرت", "تيمـيزار", "تيرمتين", "تيزي نثلاثة", "تيزي غنيف", "تيزي وزو", "تيزي راشد", "إعــكورن", "يطــافن", "زكري"] },
-          { code: "16", name: "16 - الجزائر العاصمة", communes: ["الجزائر الوسطى", "باب الوادي", "سيدي امحمد", "الأبيار", "حيدرة", "بن عكنون", "الشراقة", "دالي إبراهيم", "الدرارية", "بئر مراد رايس", "بئر خادم", "القبة", "الحراش", "باب الزوار", "الدار البيضاء", "الرويبة", "زرالدة", "عين البنيان", "الرغاية", "البرج الكيفان", "الكاليتوس", "براقي", "باش جراح", "المقرية", "المرادية", "بوزريعة", "بني المسوس", "السحاولة", "الخرايسية", "العاشور"] },
+          { code: "16", name: "16 - الجزائر", communes: ["الجزائر الوسطى", "باب الوادي", "سيدي امحمد", "الأبيار", "حيدرة", "بن عكنون", "الشراقة", "دالي إبراهيم", "الدرارية", "بئر مراد رايس", "بئر خادم", "القبة", "الحراش", "باب الزوار", "الدار البيضاء", "الرويبة", "زرالدة", "عين البنيان", "الرغاية", "البرج الكيفان", "الكاليتوس", "براقي", "باش جراح", "المقرية", "المرادية", "بوزريعة", "بني المسوس", "السحاولة", "الخرايسية", "العاشور"] },
           { code: "17", name: "17 - الجلفة", communes: ["عين الشهداء", "عين الإبل", "عين فقه", "عين معبد", "عين وسارة", "عمورة", "بنهار", "بن يعقوب", "بيرين", "بويرة الأحداب", "الشارف", "دار الشيوخ", "دلدول", "الجلفة", "دويس", "القديد", "الادريسية", "الخميس", "فيض البطمة", "قرنيني", "قطارة", "حد الصحاري", "حاسي بحبح", "حاسي العش", "حاسي فدول", "مليليحة", "مسعد", "مجبارة", "أم العظام", "سد الرحال", "سلمانة", "سيدي بايزيد", "سيدي لعجال", "تعظميت", "زعفران", "زكار"] },
           { code: "18", name: "18 - جيجل", communes: ["برج الطهر", "بودريعة بني ياجيس", "بوراوي بلهادف", "بوسيف أولاد عسكر", "الشحنة", "الشقفة", "الجمعة بني حبيبي", "جيملة", "العنصر", "العوانة", "القنار نشفي", "الميلية", "الامير عبد القادر", "أراقن سويسي", "غبالة", "جيجل", "قاوس", "خيري واد عجول", "وجانة", "أولاد رابح", "أولاد يحيى خدروش", "سلمى بن زيادة", "السطارة", "سيدي عبد العزيز", "سيدي معروف", "الطاهير", "تاكسنة", "زيامة منصورية"] },
           { code: "19", name: "19 - سطيف", communes: ["عين عباسة", "عين أرنات", "عين أزال", "عين الكبيرة", "عين الحجر", "عين ولمان", "عين لقراج", "عين الروى", "عين السبت", "أيت نوال مزادة", "ايت تيزي", "عموشة", "بابور", "بازر سكرة", "بيضاء برج", "بلاعة", "بني شبانة", "بني فودة", "بني ورتيلان", "بني وسين", "بني عزيز", "بني موحلي", "بئر حدادة", "بئر العرش", "بوعنداس", "بوقاعة", "بوسلام", "بوطالب", "الدهامشة", "جميلة", "ذراع قبيلة", "العلمة", "أوريسيا", "الولجة", "قلال", "قلتة زرقاء", "قنزات", "قجال", "حمام السخنة", "الحامة", "حمام قرقور", "حربيل", "قصر الابطال", "معاوية", "ماوكلان", "مزلوق", "واد البارد", "أولاد عدوان", "أولاد صابر", "أولاد سي أحمد", "أولاد تبان", "الرصفة", "صالح باي", "سرج الغول", "سطيف", "تاشودة", "تالة إيفاسن", "الطاية", "التلة", "تيزي نبشار"] },
@@ -642,7 +638,6 @@
                 selectWilaya.innerHTML = '<option value="">إختر الولاية...</option>';
                 wilayasData.forEach(w => {
                     const opt = document.createElement('option');
-                    // تنظيف اسم الولاية لاستخراج الاسم الصافي (مثل "16 - الجزائر العاصمة" تصبح "الجزائر العاصمة")
                     let cleanName = w.name.replace(/^\d+\s*-\s*/, '').trim();
                     opt.value = cleanName;
                     opt.innerText = w.name;
@@ -675,25 +670,22 @@
             updateShippingCost();
         }
 
-        // دالة تحديث سعر الشحن تلقائياً بناءً على الولاية وطريقة التوصيل
         function updateShippingCost() {
             const wilayaSelect = document.getElementById('wilaya-select').value;
             const shippingType = document.querySelector('input[name="shipping-type"]:checked').value;
             
-            // استخراج اسم الولاية بدون الرقم التنظيمي
             let cleanWilaya = wilayaSelect.replace(/^\d+\s*-\s*/, '').trim();
-            if (cleanWilaya.startsWith('الجزائر')) cleanWilaya = 'الجزائر العاصمة';
+            if (cleanWilaya.startsWith('الجزائر')) cleanWilaya = 'الجزائر';
 
             if (shippingRates[cleanWilaya]) {
                 currentShippingCost = shippingRates[cleanWilaya][shippingType] || 0;
             } else {
-                currentShippingCost = 600; // قيمة افتراضية في حال لم تكن مسجلة بدقة
+                currentShippingCost = 600; 
             }
 
             updateSummary(currentPrice);
         }
 
-        // دالة تغيير الصورة الكبيرة وتحديث مظهر الأزرار المصغرة
         function changeImage(buttonEl, imageUrl) {
             document.getElementById('main-product-img').src = imageUrl;
             
