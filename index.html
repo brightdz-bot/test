@@ -915,15 +915,15 @@
             }
         }
         function scrollToSection(sectionId) {
-            // إذا كان الضغط على زر أطلب الآن، نقوم بإظهار الاستمارة وإخفاء قسم التتبع إن وجد
+            // إذا ضغط الزبون على "أطلب الآن"، نقوم بإعادة ضبط الواجهة لعرض الاستمارة وإخفاء شاشة التتبع
             if (sectionId === 'order-form') {
                 const formContainer = document.getElementById('form-container');
                 const trackingContainer = document.getElementById('tracking-container');
                 const searchSection = document.getElementById('track-search-section');
 
-                if (formContainer) formContainer.classList.remove('hidden');
-                if (trackingContainer) trackingContainer.classList.add('hidden');
-                if (searchSection) searchSection.classList.remove('hidden'); // إبقاء خانة البحث ظاهرة إن راد البحث لاحقاً
+                if (trackingContainer) trackingContainer.classList.add('hidden'); // إخفاء شاشة التتبع
+                if (formContainer) formContainer.classList.remove('hidden');    // إظهار استمارة الطلب
+                if (searchSection) searchSection.classList.remove('hidden');    // إظهار خانة البحث عن الطلب
             }
 
             const section = document.getElementById(sectionId);
