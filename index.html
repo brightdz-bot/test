@@ -104,41 +104,11 @@
             box-shadow: 0 4px 12px rgba(117, 75, 45, 0.15);
         }
     </style>
-    <style>
-        body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: #fdfbf7;
-        }
-        .wood-gradient {
-            background: linear-gradient(135deg, #d4a373 0%, #a3714c 100%);
-        }
-        .wood-light-gradient {
-            background: linear-gradient(135deg, #ffffff 0%, #faedcd 100%);
-        }
-        .pulse-subtle {
-            animation: pulse-animation 2s infinite;
-        }
-        @keyframes pulse-animation {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
-        }
-        .offer-card {
-            transition: all 0.2s ease-in-out;
-            cursor: pointer;
-        }
-        .offer-card.active {
-            border-color: #754b2d !important;
-            background-color: #f7f1e5 !important;
-            box-shadow: 0 4px 12px rgba(117, 75, 45, 0.15);
-        }
-    </style>
 </head>
 <body class="text-gray-800 antialiased selection:bg-wood-200 selection:text-wood-900">
 
     <!-- Top Announcement Bar -->
     <div class="bg-wood-900 text-wood-100 text-xs sm:text-sm py-2 px-4 text-center font-bold tracking-wide flex items-center justify-center gap-2">
-        
         <span>توصيل سريع لكافة الـ 58 ولاية | الدفع بعد المعاينة والإستلام</span>
     </div>
 
@@ -324,9 +294,9 @@
                     <div>
                         <label class="block text-xs font-bold text-gray-700 mb-2">العرض المختار:</label>
                         <select id="bundle-select" onchange="updateBundleFromSelect()" class="w-full p-3.5 rounded-xl border-2 border-wood-200 focus:border-wood-600 focus:outline-none bg-white font-bold text-sm text-wood-900">
-                            <option value="pack1">العرض العادي: قطعة واحدة - 1,400 دج (التوصيل حسب الولاية)</option>
-                            <option value="pack2" selected>عرض القطعتين (باك المطبخ والحمام): قطعتين - 2,300 دج (الأكثر طلباً + التوصيل حسب الولاية)</option>
-                            <option value="pack4">العرض العائلي الفاخر: 4 قطع - 3,800 دج (التوصيل حسب الولاية)</option>
+                            <option value="pack1">العرض العادي: قطعة واحدة - 1,400 دج</option>
+                            <option value="pack2" selected>عرض القطعتين (باك المطبخ والحمام): قطعتين - 2,300 دج (الأكثر طلباً)</option>
+                            <option value="pack4">العرض العائلي الفاخر: 4 قطع - 3,800 دج</option>
                         </select>
                     </div>
 
@@ -361,6 +331,21 @@
                         </div>
                     </div>
 
+                    <!-- خيار نوع التوصيل (المنزل أو Stop Desk) -->
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-2">طريقة التوصيل <span class="text-red-500">*</span></label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="flex items-center gap-2 p-3 rounded-xl border-2 border-wood-200 bg-white cursor-pointer hover:border-wood-700 transition">
+                                <input type="radio" name="shipping-type" value="home" checked onchange="updateShippingCost()" class="text-wood-800 focus:ring-wood-700">
+                                <span class="text-xs font-bold text-wood-900">توصيل للمنزل 🏠</span>
+                            </label>
+                            <label class="flex items-center gap-2 p-3 rounded-xl border-2 border-wood-200 bg-white cursor-pointer hover:border-wood-700 transition">
+                                <input type="radio" name="shipping-type" value="stopdesk" onchange="updateShippingCost()" class="text-wood-800 focus:ring-wood-700">
+                                <span class="text-xs font-bold text-wood-900">مكتب الشحن (Stop Desk) 🏢</span>
+                            </label>
+                        </div>
+                    </div>
+
                     <div class="bg-white p-4 rounded-xl border border-wood-200 space-y-2 text-xs sm:text-sm">
                         <div class="flex justify-between text-gray-600">
                             <span>سعر المنتج/العرض:</span>
@@ -368,11 +353,11 @@
                         </div>
                         <div class="flex justify-between text-gray-600">
                             <span>مصاريف التوصيل:</span>
-                            <span id="summary-shipping" class="font-bold text-gray-800">حسب الولاية 🚛</span>
+                            <span id="summary-shipping" class="font-bold text-gray-800">0 دج</span>
                         </div>
                         <div class="pt-2 border-t border-gray-100 flex justify-between text-base font-extrabold text-wood-900">
                             <span>المجموع الكلي للدفع:</span>
-                            <span id="summary-total" class="text-xl text-wood-900">2,300 دج + التوصيل</span>
+                            <span id="summary-total" class="text-xl text-wood-900">2,300 دج</span>
                         </div>
                     </div>
 
@@ -524,6 +509,68 @@
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzlBzK_YliccqGZbsE25YTnsfC82OaqpBHupKMddx12ay8Te87OfZBQloikl5xBAfzv/exec';
         const STORE_WHATSAPP_NUMBER = '213798353165'; 
 
+        // جدول أسعار الشحن الرسمي للـ 58 ولاية (منزل / Stop Desk)
+        const shippingRates = {
+            "أدرار": { home: 1400, stop: 750 },
+            "الشلف": { home: 600, stop: 400 },
+            "الأغواط": { home: 900, stop: 500 },
+            "أم البواقي": { home: 900, stop: 500 },
+            "باتنة": { home: 800, stop: 400 },
+            "بجاية": { home: 700, stop: 400 },
+            "بسكرة": { home: 700, stop: 400 },
+            "بشار": { home: 1300, stop: 550 },
+            "البليدة": { home: 600, stop: 400 },
+            "البويرة": { home: 600, stop: 400 },
+            "تمنراست": { home: 1700, stop: 1050 },
+            "تبسة": { home: 700, stop: 450 },
+            "تلمسان": { home: 700, stop: 400 }, // متوسط البديل (400/450)
+            "تيارت": { home: 700, stop: 400 },
+            "تيزي وزو": { home: 600, stop: 400 },
+            "الجزائر العاصمة": { home: 600, stop: 400 },
+            "الجلفة": { home: 600, stop: 400 },
+            "جيجل": { home: 600, stop: 400 },
+            "سطيف": { home: 600, stop: 400 },
+            "سعيدة": { home: 700, stop: 450 },
+            "سكيكدة": { home: 600, stop: 400 },
+            "سيدي بلعباس": { home: 700, stop: 400 },
+            "عنابة": { home: 600, stop: 400 },
+            "قالمة": { home: 700, stop: 450 },
+            "قسنطينة": { home: 600, stop: 400 },
+            "المدية": { home: 600, stop: 400 },
+            "مستغانم": { home: 700, stop: 400 },
+            "المسيلة": { home: 800, stop: 450 },
+            "معسكر": { home: 700, stop: 400 },
+            "ورقلة": { home: 1000, stop: 600 },
+            "وهران": { home: 700, stop: 450 },
+            "البيض": { home: 1100, stop: 600 },
+            "إليزي": { home: 1700, stop: 1050 },
+            "برج بوعريريج": { home: 600, stop: 400 },
+            "بومرداس": { home: 600, stop: 400 },
+            "الطارف": { home: 700, stop: 450 },
+            "تندوف": { home: 1300, stop: 750 },
+            "تسمسيلت": { home: 700, stop: 400 },
+            "الوادي": { home: 1000, stop: 600 },
+            "خنشلة": { home: 800, stop: 450 },
+            "سوق أهراس": { home: 700, stop: 450 },
+            "تيبازة": { home: 600, stop: 400 },
+            "ميلة": { home: 600, stop: 400 },
+            "عين الدفلى": { home: 600, stop: 400 },
+            "النعامة": { home: 1100, stop: 600 },
+            "عين تموشنت": { home: 700, stop: 400 },
+            "غرداية": { home: 1000, stop: 600 },
+            "غليزان": { home: 700, stop: 400 },
+            "تيميمون": { home: 1300, stop: 800 },
+            "برج باجي مختار": { home: 1300, stop: 1200 },
+            "أولاد جلال": { home: 800, stop: 450 },
+            "بني عباس": { home: 1300, stop: 1200 },
+            "عين صالح": { home: 1300, stop: 1050 },
+            "عين قزام": { home: 1300, stop: 1050 },
+            "تقرت": { home: 1000, stop: 600 },
+            "جانت": { home: 1300, stop: 1200 },
+            "المغير": { home: 1000, stop: 600 },
+            "المنيعة": { home: 1000, stop: 600 }
+        };
+
         const wilayasData = [
           { code: "1", name: "01 - أدرار", communes: ["أدرار", "اقبلي", "أولف", "بودة", "فنوغيل", "إن زغمير", "أولاد أحمد تيمي", "رقان", "سالي", "السبع", "تامنطيط", "تامست", "تيمقتن", "تيت", "تسابيت", "زاوية كنتة"] },
           { code: "2", name: "02 - الشلف", communes: ["أبو الحسن", "عين مران", "بنايرية", "بني بوعتاب", "بني حواء", "بني راشد", "بوقادير", "بوزغاية", "بريرة", "الشطية", "الشلف", "الظهرة", "الحجاج", "الكريمية", "المرسى", "حرشون", "الهرانفة", "الأبيض مجاجة", "مصدق", "وادي الفضة", "وادي قوسين", "وادي سلي", "أولاد عباس", "أولاد بن عبد القادر", "أولاد فارس", "أم الدروع", "سنجاس", "سيدي عبد الرحمن", "سيدي عكاشة", "الصبحة", "تاجنة", "تلعصة", "تاوقريت", "تنس", "الزبوجة"] },
@@ -587,6 +634,7 @@
 
         let currentPrice = 2300;
         let currentBundleName = 'عرض القطعتين (باك المطبخ والحمام)';
+        let currentShippingCost = 0;
 
         window.onload = function() {
             const selectWilaya = document.getElementById('wilaya-select');
@@ -594,7 +642,9 @@
                 selectWilaya.innerHTML = '<option value="">إختر الولاية...</option>';
                 wilayasData.forEach(w => {
                     const opt = document.createElement('option');
-                    opt.value = w.name;
+                    // تنظيف اسم الولاية لاستخراج الاسم الصافي (مثل "16 - الجزائر العاصمة" تصبح "الجزائر العاصمة")
+                    let cleanName = w.name.replace(/^\d+\s*-\s*/, '').trim();
+                    opt.value = cleanName;
                     opt.innerText = w.name;
                     if(w.code === "16") opt.selected = true;
                     selectWilaya.appendChild(opt);
@@ -610,7 +660,7 @@
             
             communeSelect.innerHTML = '<option value="">إختر البلدية...</option>';
             
-            const wObj = wilayasData.find(w => w.name === selectedWilayaName);
+            const wObj = wilayasData.find(w => w.name.includes(selectedWilayaName));
             if (wObj && wObj.communes) {
                 wObj.communes.forEach(c => {
                     const opt = document.createElement('option');
@@ -622,14 +672,31 @@
                     communeSelect.selectedIndex = 1;
                 }
             }
+            updateShippingCost();
+        }
+
+        // دالة تحديث سعر الشحن تلقائياً بناءً على الولاية وطريقة التوصيل
+        function updateShippingCost() {
+            const wilayaSelect = document.getElementById('wilaya-select').value;
+            const shippingType = document.querySelector('input[name="shipping-type"]:checked').value;
+            
+            // استخراج اسم الولاية بدون الرقم التنظيمي
+            let cleanWilaya = wilayaSelect.replace(/^\d+\s*-\s*/, '').trim();
+            if (cleanWilaya.startsWith('الجزائر')) cleanWilaya = 'الجزائر العاصمة';
+
+            if (shippingRates[cleanWilaya]) {
+                currentShippingCost = shippingRates[cleanWilaya][shippingType] || 0;
+            } else {
+                currentShippingCost = 600; // قيمة افتراضية في حال لم تكن مسجلة بدقة
+            }
+
+            updateSummary(currentPrice);
         }
 
         // دالة تغيير الصورة الكبيرة وتحديث مظهر الأزرار المصغرة
         function changeImage(buttonEl, imageUrl) {
-            // تغيير الصورة الكبيرة
             document.getElementById('main-product-img').src = imageUrl;
             
-            // إزالة حدود التحديد من جميع الصور المصغرة وإضافتها للصورة المختارة
             const thumbs = document.querySelectorAll('.thumb-btn');
             thumbs.forEach(btn => {
                 btn.classList.remove('border-wood-700');
@@ -715,11 +782,12 @@
 
             if (priceEl) priceEl.innerText = price.toLocaleString() + ' دج';
             if (shippingEl) {
-                shippingEl.innerText = 'حسب الولاية 🚛';
-                shippingEl.className = 'font-bold text-gray-800';
+                shippingEl.innerText = currentShippingCost.toLocaleString() + ' دج';
+                shippingEl.className = 'font-bold text-wood-800';
             }
             if (totalEl) {
-                totalEl.innerText = price.toLocaleString() + ' دج + التوصيل';
+                let grandTotal = price + currentShippingCost;
+                totalEl.innerText = grandTotal.toLocaleString() + ' دج';
             }
         }
 
@@ -733,7 +801,11 @@
             const phone = document.getElementById('phone').value;
             const wilaya = document.getElementById('wilaya-select').value;
             const commune = document.getElementById('commune-select').value;
-            const totalText = document.getElementById('summary-total').innerText;
+            const shippingTypeVal = document.querySelector('input[name="shipping-type"]:checked').value;
+            const shippingTypeText = shippingTypeVal === 'home' ? 'توصيل للمنزل 🏠' : 'مكتب الشحن Stop Desk 🏢';
+            
+            let grandTotalNum = currentPrice + currentShippingCost;
+            const totalText = grandTotalNum.toLocaleString() + ' دج (شامل التوصيل)';
 
             if (!commune) {
                 alert("يرجى اختيار البلدية");
@@ -751,7 +823,7 @@
             if (bundleVal === 'pack4') quantity = "4";
 
             const orderId = "ORD-" + Math.floor(Math.random() * 899999 + 100000);
-            const fullOrderDetails = currentBundleName + ' (الكمية: ' + quantity + ')';
+            const fullOrderDetails = currentBundleName + ' (الكمية: ' + quantity + ') - التوصيل: ' + shippingTypeText;
             const orderStatus = "قيد التأكيد";
 
             document.getElementById('modal-order-id').innerText = orderId;
@@ -764,8 +836,9 @@
                 `👤 الاسم: ${fullName}\n` +
                 `📞 الهاتف: ${phone}\n` +
                 `📍 العنوان: ${wilaya} - ${commune}\n` +
+                `🚚 نوع التوصيل: ${shippingTypeText} (${currentShippingCost} دج)\n` +
                 `🛍️ المنتج: ${fullOrderDetails}\n` +
-                `💰 المبلغ: ${totalText}\n\n` +
+                `💰 المبلغ الإجمالي: ${totalText}\n\n` +
                 `أرجو تأكيد الطلب وشكراً!`
             );
             
@@ -782,7 +855,7 @@
                 formData.append('orderId', orderId);
                 formData.append('fullName', fullName);
                 formData.append('phone', phone);
-                formData.append('wilaya', wilaya);
+                formData.append('wilaya', wilaya + ' (' + shippingTypeText + ')');
                 formData.append('commune', commune);
                 formData.append('order', fullOrderDetails);
                 formData.append('status', orderStatus);
@@ -914,26 +987,25 @@
                 });
             }
         }
+
         function scrollToSection(sectionId) {
             let targetId = sectionId;
 
-            // إذا كان المطلوب هو الانتقال للاستمارة عبر زر "أطلب الآن"، نقوم بإظهار الاستمارة أولاً
             if (sectionId === 'order-form') {
                 const formContainer = document.getElementById('form-container');
                 const trackingContainer = document.getElementById('tracking-container');
                 const searchSection = document.getElementById('track-search-section');
 
-                if (trackingContainer) trackingContainer.classList.add('hidden'); // إخفاء التتبع
-                if (formContainer) formContainer.classList.remove('hidden');    // إظهار الاستمارة
-                if (searchSection) searchSection.classList.remove('hidden');    // إظهار البحث
+                if (trackingContainer) trackingContainer.classList.add('hidden'); 
+                if (formContainer) formContainer.classList.remove('hidden');    
+                if (searchSection) searchSection.classList.remove('hidden');    
 
-                // **التعديل الجذري هنا:** اجعل التمرير يستهدف صندوق الاستمارة (form-container) مباشرة وليس القسم العام
                 targetId = 'form-container';
             }
 
             const section = document.getElementById(targetId);
             if (section) {
-                const headerOffset = 95; // مسافة أمان ممتازة لتظهر الاستمارة تحت الشريط العلوي مباشرة
+                const headerOffset = 95; 
                 const elementPosition = section.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
