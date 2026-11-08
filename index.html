@@ -915,6 +915,17 @@
             }
         }
         function scrollToSection(sectionId) {
+            // إذا كان الضغط على زر أطلب الآن، نقوم بإظهار الاستمارة وإخفاء قسم التتبع إن وجد
+            if (sectionId === 'order-form') {
+                const formContainer = document.getElementById('form-container');
+                const trackingContainer = document.getElementById('tracking-container');
+                const searchSection = document.getElementById('track-search-section');
+
+                if (formContainer) formContainer.classList.remove('hidden');
+                if (trackingContainer) trackingContainer.classList.add('hidden');
+                if (searchSection) searchSection.classList.remove('hidden'); // إبقاء خانة البحث ظاهرة إن راد البحث لاحقاً
+            }
+
             const section = document.getElementById(sectionId);
             if (section) {
                 const headerOffset = 85; // مسافة الأمان تحت الهيدر
