@@ -845,9 +845,11 @@
                 formData.append('phone', phone);
                 formData.append('wilaya', wilaya);
                 formData.append('commune', commune);
-                formData.append('shippingType', shippingTypeText); // إرسال خانة طريقة التوصيل بوضوح للشيت
+                formData.append('shippingType', shippingTypeText);
                 formData.append('order', fullOrderDetails);
                 formData.append('status', orderStatus);
+                formData.append('shippingCost', currentShippingCost); // مبلغ التوصيل لوحده
+                formData.append('productPrice', currentPrice);         // مبلغ البضاعة لوحده
                 formData.append('totalPrice', totalText);
 
                 fetch(GOOGLE_SCRIPT_URL, {
