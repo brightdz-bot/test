@@ -33,7 +33,7 @@
         fbq('track', 'ViewContent', {
           content_name: 'حامل المناشف الخشبي بالجاذبية',
           content_category: 'Home & Decor',
-          value: 2300,
+          value: 3300,
           currency: 'DZD'
         });
       }
@@ -179,7 +179,7 @@
                     <div class="space-y-2 pt-1">
                         <label class="block text-xs font-bold text-gray-700">اختر العرض المناسب لك:</label>
                         
-                        <!-- العرض 1 -->
+                        <!-- العرض 1 (1900 دج) -->
                         <div onclick="selectOffer('pack1', 1900)" id="card-pack1" class="offer-card p-3 rounded-xl bg-white border-2 border-gray-200 flex items-center justify-between shadow-xs">
                             <div class="flex items-center gap-3">
                                 <div class="w-6 h-6 rounded-full border-2 border-wood-700 flex items-center justify-center">
@@ -195,7 +195,7 @@
                             </div>
                         </div>
 
-                        <!-- العرض 2 (الأكثر طلباً) -->
+                        <!-- العرض 2 (3300 دج - الأكثر طلباً) -->
                         <div onclick="selectOffer('pack2', 3300)" id="card-pack2" class="offer-card active p-3 rounded-xl bg-white border-2 border-wood-700 flex items-center justify-between shadow-xs relative overflow-hidden">
                             <span class="absolute top-0 left-0 bg-brandRed text-white text-[9px] px-2 py-0.5 rounded-br-lg font-bold">توفير رائع</span>
                             <div class="flex items-center gap-3">
@@ -213,7 +213,7 @@
                             </div>
                         </div>
 
-                        <!-- العرض 3 -->
+                        <!-- العرض 3 (6200 دج) -->
                         <div onclick="selectOffer('pack4', 6200)" id="card-pack4" class="offer-card p-3 rounded-xl bg-white border-2 border-gray-200 flex items-center justify-between shadow-xs">
                             <div class="flex items-center gap-3">
                                 <div class="w-6 h-6 rounded-full border-2 border-wood-700 flex items-center justify-center">
@@ -236,7 +236,7 @@
                         <div class="flex items-baseline justify-between">
                             <span class="text-xs font-bold text-gray-600">السعر المختار الآن:</span>
                             <div class="flex items-baseline gap-2">
-                                <span id="hero-display-price" class="text-2xl font-black text-wood-900">2,300 دج</span>
+                                <span id="hero-display-price" class="text-2xl font-black text-wood-900">3,300 دج</span>
                             </div>
                         </div>
                         <a href="#order-form" class="w-full py-3 px-6 rounded-xl bg-wood-800 hover:bg-wood-900 text-white font-extrabold text-base text-center shadow-lg transition-all flex items-center justify-center gap-2 pulse-subtle">
@@ -280,9 +280,9 @@
                     <div>
                         <label class="block text-xs font-bold text-gray-700 mb-2">العرض المختار:</label>
                         <select id="bundle-select" onchange="updateBundleFromSelect()" class="w-full p-3.5 rounded-xl border-2 border-wood-200 focus:border-wood-600 focus:outline-none bg-white font-bold text-sm text-wood-900">
-                            <option value="pack1">العرض العادي: قطعة واحدة - 1,400 دج</option>
-                            <option value="pack2" selected>عرض القطعتين (باك المطبخ والحمام): قطعتين - 2,300 دج (الأكثر طلباً)</option>
-                            <option value="pack4">العرض العائلي الفاخر: 4 قطع - 3,800 دج</option>
+                            <option value="pack1">العرض العادي: قطعة واحدة - 1,900 دج</option>
+                            <option value="pack2" selected>عرض القطعتين (باك المطبخ والحمام): قطعتين - 3,300 دج (الأكثر طلباً)</option>
+                            <option value="pack4">العرض العائلي الفاخر: 4 قطع - 6,200 دج</option>
                         </select>
                     </div>
 
@@ -335,7 +335,7 @@
                     <div class="bg-white p-4 rounded-xl border border-wood-200 space-y-2 text-xs sm:text-sm">
                         <div class="flex justify-between text-gray-600">
                             <span>سعر المنتج/العرض:</span>
-                            <span id="summary-price" class="font-bold text-gray-800">2,300 دج</span>
+                            <span id="summary-price" class="font-bold text-gray-800">3,300 دج</span>
                         </div>
                         <div class="flex justify-between text-gray-600">
                             <span>مصاريف التوصيل:</span>
@@ -343,7 +343,7 @@
                         </div>
                         <div class="pt-2 border-t border-gray-100 flex justify-between text-base font-extrabold text-wood-900">
                             <span>المجموع الكلي للدفع:</span>
-                            <span id="summary-total" class="text-xl text-wood-900">2,300 دج</span>
+                            <span id="summary-total" class="text-xl text-wood-900">3,300 دج</span>
                         </div>
                     </div>
 
@@ -440,7 +440,7 @@
         </div>
     </section>
 
-    <!-- Footer (تم استبدال حرف B بصورة شعار المتجر هنا) -->
+    <!-- Footer -->
     <footer class="bg-wood-900 text-wood-200 py-8 border-t border-wood-800">
         <div class="max-w-6xl mx-auto px-4 text-center space-y-4">
             <div class="flex items-center justify-center gap-3">
@@ -490,7 +490,7 @@
         </div>
     </div>
 
-    <!-- نافذة تنبيه طلب جديد (تظهر عند الضغط على أطلب الآن من الأعلى أثناء التتبع) -->
+    <!-- نافذة تنبيه طلب جديد -->
     <div id="newOrderModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm hidden">
         <div class="bg-white rounded-2xl p-6 max-w-sm w-full mx-4 shadow-2xl border border-wood-100 text-center transform transition-all">
             <div class="w-12 h-12 rounded-full bg-wood-100 text-wood-800 flex items-center justify-center mx-auto mb-4 text-xl">
@@ -513,7 +513,7 @@
         </div>
     </div>
 
-    <!-- النافذة الخاصة بعرض رقم الأوردر عند الضغط على إجراء طلب جديد أو تتبع آخر -->
+    <!-- النافذة الخاصة بعرض رقم الأوردر -->
     <div id="orderPromptModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm hidden">
         <div class="bg-white rounded-2xl p-6 max-w-sm w-full mx-4 shadow-2xl border border-wood-100 text-center transform transition-all space-y-4">
             <div class="w-12 h-12 rounded-full bg-wood-100 text-wood-800 flex items-center justify-center mx-auto text-xl">
@@ -667,7 +667,7 @@
           { code: "58", name: "58 - المنيعة", communes: ["المنيعة", "حاسي الفحل", "حاسي القارة"] }
         ];
 
-        let currentPrice = 2300;
+        let currentPrice = 3300;
         let currentBundleName = 'عرض القطعتين (باك المطبخ والحمام)';
         let currentShippingCost = 600;
         
@@ -688,7 +688,7 @@
                 });
                 onWilayaChange();
             }
-            selectOffer('pack2', 2300);
+            selectOffer('pack2', 3300);
         };
 
         function onWilayaChange() {
@@ -767,9 +767,9 @@
             const bundleSelect = document.getElementById('bundle-select');
             if (!bundleSelect) return;
             const val = bundleSelect.value;
-            let price = 1400;
-            if (val === 'pack2') price = 2300;
-            if (val === 'pack4') price = 3800;
+            let price = 1900;
+            if (val === 'pack2') price = 3300;
+            if (val === 'pack4') price = 6200;
             
             ['pack1', 'pack2', 'pack4'].forEach(id => {
                 const card = document.getElementById('card-' + id);
@@ -1121,7 +1121,7 @@
             if (whatsappTrackBtn) {
                 let nameToUse = customerName || 'الزبون الكريم';
                 let prodToUse = orderName || 'حامل المناشف الخشبي الفاخر';
-                let totalToUse = totalText || '2,300 دج';
+                let totalToUse = totalText || '3,300 دج';
                 let codeToUse = trackingCode || '28-H8G9NDFX0V-ZR';
 
                 let trackingMsg = '';
