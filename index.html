@@ -115,8 +115,8 @@
                     <i class="fa-solid fa-magnifying-glass text-wood-700"></i>
                     <span class="hidden sm:inline">تتبع طلبك</span>
                 </button>
-                <!-- تم ربط الزر بالنافذة المنبثقة الجديدة -->
-                <button onclick="openNewOrderModal()" class="bg-wood-800 hover:bg-wood-900 text-white px-4 py-2 rounded-lg font-bold text-sm transition-all shadow-md flex items-center gap-2 cursor-pointer">
+                <!-- الزر العلوي الذكي -->
+                <button onclick="handleHeaderOrderClick()" class="bg-wood-800 hover:bg-wood-900 text-white px-4 py-2 rounded-lg font-bold text-sm transition-all shadow-md flex items-center gap-2 cursor-pointer">
                     <i class="fa-solid fa-cart-shopping text-xs"></i>
                     <span>أطلب الآن</span>
                 </button>
@@ -150,7 +150,7 @@
                             <img src="https://scontent.faae2-3.fna.fbcdn.net/v/t39.30808-6/891511582_2341173329970893_4980705526116754681_n.jpg?stp=dst-jpg_tt6&cstp=mx1211x1299&ctp=p180x540&_nc_cat=101&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGS-CmRfRhdEQ1MjtxkDDsVHyV12QALE_sfJXXZAAsT-_2-buWGmNRbZepMtwQWHmjJ8bHkl4r3EdTEiIGkUPFj&_nc_ohc=H8rWNHxRZy4Q7kNvwEB1XB5&_nc_oc=AdruqhisUQCIqluc0te4nnskLMc_VCdOEl88fKrxoZ4S2S30g0xgjRoguLN50d4JIQg&_nc_zt=23&_nc_ht=scontent.faae2-3.fna&_nc_gid=wbVLmUNPmLHaxFvfdlWN4Q&_nc_ss=7b2a8&oh=00_AQQ3bg9wL1JfJB17c0sbgXutfF3e_J9YUzHO9WuDU0EDiw&oe=6AF587BB" class="w-full h-16 object-cover" alt="المطبخ">
                         </button>
                         <button type="button" onclick="changeImage(this, 'https://scontent.faae2-3.fna.fbcdn.net/v/t39.30808-6/893766167_2341182689969957_8414253250875486210_n.jpg?stp=dst-jpg_tt6&cstp=mx1199x1312&ctp=s565x565&_nc_cat=103&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGDRWNHamjkGGVkQVDK1LwhpvI8MQD3gFmm8jwxAPeAWVsjMkOIgho1CRs-uAEicyxHv0gTJpRfbvUQFY-i-Vt8&_nc_ohc=sb3jekYWP7sQ7kNvwHIxq4O&_nc_oc=AdppMqyzjbPbBh3oRKPM_v5iICI9LcxLTfpEkVNho7n0u1TDAbpRvqKFan24DLvSJjg&_nc_zt=23&_nc_ht=scontent.faae2-3.fna&_nc_gid=dyPyq3g1lRTlQPchcBXw4w&_nc_ss=7b2a8&oh=00_AQR1vU6OeLmZpLPpXoT4VsApoAevd82wQ2SiBkhSABPLkw&oe=6AF57889')" class="thumb-btn border-4 border-transparent hover:border-wood-500 rounded-xl overflow-hidden bg-white shadow-sm focus:outline-none transition">
-                            <img src="https://scontent.faae2-3.fna.fbcdn.net/v/t39.30808-6/893766167_2341182689969957_8414253250875486210_n.jpg?stp=dst-jpg_tt6&cstp=mx1199x1312&ctp=s565x565&_nc_cat=103&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGDRWNHamjkGGVkQVDK1LwhpvI8MQD3gFmm8jwxAPeAWVsjMkOIgho1CRs-uAEicyxHv0gTJpRfbvUQFY-i-Vt8&_nc_ohc=sb3jekYWP7sQ7kNvwHIxq4O&_nc_oc=AdppMqyzjbPbBh3oRKPM_v5iICI9LcxLTfpEkVNho7n0u1TDAbpRvqKFan24DLvSJjg&_nc_zt=23&_nc_ht=scontent.faae2-3.fna&_nc_gid=dyPyq3g1lRTlQPchcBXw4w&_nc_ss=7b2a8&oh=00_AQR1vU6OeLmZpLPpXoT4VsApoAevd82wQ2SiBkhSABPLkw&oe=6AF57889" class="w-full h-16 object-cover" alt="تفاصيل الخشب">
+                            <img src="https://scontent.faae2-3.fna.fbcdn.net/v/t39.30808-6/893766167_2341182689969957_8414253250875486210_n.jpg?stp=dst-jpg_tt6&cstp=mx1199x1312&ctp=s565x565&_nc_cat=103&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGDRWNHamjkGGVkQVDK1LwhpvI8MQD3gFmm8jwxAPeAWVsjMkOIgho1CRs-uAEicyxHv0gTJpRfbvUQFY-i-Vt8&_nc_ohc=sb3jekYWP7sQ7kNvwHIxq4O&_nc_oc=AdppMqyzjbPbBh3oRKPM_v5iICI9LcxLTfpEkVNho7n0u1TDAbpRfqKFan24DLvSJjg&_nc_zt=23&_nc_ht=scontent.faae2-3.fna&_nc_gid=dyPyq3g1lRTlQPchcBXw4w&_nc_ss=7b2a8&oh=00_AQR1vU6OeLmZpLPpXoT4VsApoAevd82wQ2SiBkhSABPLkw&oe=6AF57889" class="w-full h-16 object-cover" alt="تفاصيل الخشب">
                         </button>
                     </div>
                 </div>
@@ -430,7 +430,7 @@
                 </div>
 
                 <div class="pt-2">
-                    <button onclick="location.reload()" class="w-full py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-xl transition text-sm cursor-pointer">
+                    <button onclick="resetAndNewOrder()" class="w-full py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-xl transition text-sm cursor-pointer">
                         إجراء طلب جديد أو بحث آخر
                     </button>
                 </div>
@@ -452,7 +452,7 @@
         </div>
     </footer>
 
-    <!-- Success Modal (نافذة نجاح الطلب) -->
+    <!-- Success Modal -->
     <div id="success-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
         <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full text-center space-y-4 shadow-2xl">
             <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto text-3xl">
@@ -489,7 +489,7 @@
         </div>
     </div>
 
-    <!-- نافذة تنبيه طلب جديد (الجديدة) -->
+    <!-- نافذة تنبيه طلب جديد (تظهر فقط إذا كان الزبون في وضع التتبع وضغط على أطلب الآن) -->
     <div id="newOrderModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm hidden">
         <div class="bg-white rounded-2xl p-6 max-w-sm w-full mx-4 shadow-2xl border border-wood-100 text-center transform transition-all">
             <div class="w-12 h-12 rounded-full bg-wood-100 text-wood-800 flex items-center justify-center mx-auto mb-4 text-xl">
@@ -642,6 +642,9 @@
         let currentPrice = 2300;
         let currentBundleName = 'عرض القطعتين (باك المطبخ والحمام)';
         let currentShippingCost = 600;
+        
+        // متغير لمتابعة هل الزبون في وضع التتبع أم لا
+        let isUserInTrackingMode = false;
 
         window.onload = function() {
             const selectWilaya = document.getElementById('wilaya-select');
@@ -791,10 +794,16 @@
             }
         }
 
-        // دوال التحكم في النافذة المنبثقة للطلب الجديد
-        function openNewOrderModal() {
-            document.getElementById('newOrderModal').classList.remove('hidden');
-            document.getElementById('newOrderModal').classList.add('flex');
+        // التحكم الذكي في زر "أطلب الآن" العلوي
+        function handleHeaderOrderClick() {
+            if (isUserInTrackingMode) {
+                // إذا كان الزبون في وضع التتبع، تظهر النافذة المنبثقة
+                document.getElementById('newOrderModal').classList.remove('hidden');
+                document.getElementById('newOrderModal').classList.add('flex');
+            } else {
+                // إذا كان في الصفحة العادية، ينتقل فوراً لاستمارة الطلب بدون أي نافذة
+                scrollToSection('order-form');
+            }
         }
 
         function closeNewOrderModal() {
@@ -804,12 +813,48 @@
 
         function confirmNewOrder() {
             closeNewOrderModal();
-            scrollToSection('order-form');
+            resetAndNewOrder();
         }
 
         function scrollToOffers() {
             closeNewOrderModal();
+            // إظهار الاستمارة وإخفاء التتبع وإعادة الضبط
+            const formContainer = document.getElementById('form-container');
+            const trackingContainer = document.getElementById('tracking-container');
+            const searchSection = document.getElementById('track-search-section');
+
+            if (trackingContainer) trackingContainer.classList.add('hidden');
+            if (formContainer) formContainer.classList.remove('hidden');
+            if (searchSection) searchSection.classList.remove('hidden');
+            isUserInTrackingMode = false;
+            
             scrollToSection('offers-section');
+        }
+
+        // دالة تنظيف الحقول وإصلاح مشكلة التحقيق والتعليق عند طلب جديد
+        function resetAndNewOrder() {
+            const formContainer = document.getElementById('form-container');
+            const trackingContainer = document.getElementById('tracking-container');
+            const searchSection = document.getElementById('track-search-section');
+
+            if (trackingContainer) trackingContainer.classList.add('hidden');
+            if (formContainer) formContainer.classList.remove('hidden');
+            if (searchSection) searchSection.classList.remove('hidden');
+
+            // تفريغ حقول النموذج
+            const form = document.getElementById('checkout-form');
+            if (form) form.reset();
+
+            // إعادة زر الإرسال لوضعه الطبيعي وإلغاء حالة التحميل
+            const submitBtn = document.getElementById('submit-btn');
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                submitBtn.innerHTML = '<i class="fa-solid fa-check-circle"></i> <span>تأكيد الطلب الآن (الدفع عند الاستلام)</span>';
+            }
+
+            isUserInTrackingMode = false;
+            scrollToSection('order-form');
         }
 
         function handleFormSubmit(e) {
@@ -909,6 +954,8 @@
                 successModal.classList.add('hidden');
             }
 
+            isUserInTrackingMode = true; // تفعيل وضع التتبع
+
             if (window.lastOrderData) {
                 showTrackingView(window.lastOrderData.orderId, window.lastOrderData.orderName, window.lastOrderData.total, window.lastOrderData.shippingInfo, window.lastOrderData.fullName);
             }
@@ -921,6 +968,7 @@
                 return;
             }
 
+            isUserInTrackingMode = true; // تفعيل وضع التتبع عند البحث اليدوي
             showTrackingView(inputVal, 'جاري جلب تفاصيل المنتج...', '---', '---', 'الزبون');
             checkOrderStatus(inputVal);
         }
@@ -1037,13 +1085,6 @@
         function scrollToSection(sectionId) {
             let targetId = sectionId;
             if (sectionId === 'order-form') {
-                const formContainer = document.getElementById('form-container');
-                const trackingContainer = document.getElementById('tracking-container');
-                const searchSection = document.getElementById('track-search-section');
-
-                if (trackingContainer) trackingContainer.classList.add('hidden'); 
-                if (formContainer) formContainer.classList.remove('hidden');    
-                if (searchSection) searchSection.classList.remove('hidden');    
                 targetId = 'form-container';
             }
 
