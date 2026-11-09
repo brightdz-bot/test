@@ -115,7 +115,6 @@
                     <i class="fa-solid fa-magnifying-glass text-wood-700"></i>
                     <span class="hidden sm:inline">تتبع طلبك</span>
                 </button>
-                <!-- الزر العلوي الذكي -->
                 <button onclick="handleHeaderOrderClick()" class="bg-wood-800 hover:bg-wood-900 text-white px-4 py-2 rounded-lg font-bold text-sm transition-all shadow-md flex items-center gap-2 cursor-pointer">
                     <i class="fa-solid fa-cart-shopping text-xs"></i>
                     <span>أطلب الآن</span>
@@ -289,7 +288,7 @@
                     <div>
                         <label class="block text-xs font-bold text-gray-700 mb-1">الاسم الكامل <span class="text-red-500">*</span></label>
                         <div class="relative">
-                            <input type="text" id="fullname" required placeholder="مثال: محمد الأمين" class="w-full p-3.5 pr-10 rounded-xl border border-gray-300 focus:border-wood-600 focus:outline-none bg-white text-sm">
+                            <input type="text" id="fullname" required placeholder="مثال: محمد الأمين" class="w-full p-3.5 pr-10 rounded-xl border border-gray-300 focus:border-wood-600 focus:outline-none bg-white text-sm" style="unicode-bidi: plaintext;">
                             <i class="fa-solid fa-user absolute right-3.5 top-4 text-gray-400"></i>
                         </div>
                     </div>
@@ -297,7 +296,7 @@
                     <div>
                         <label class="block text-xs font-bold text-gray-700 mb-1">رقم الهاتف <span class="text-red-500">*</span></label>
                         <div class="relative">
-                            <input type="tel" id="phone" required pattern="[0-9]{10}" placeholder="06XX XX XX XX" class="w-full p-3.5 pr-10 rounded-xl border border-gray-300 focus:border-wood-600 focus:outline-none bg-white text-sm dir-ltr text-right">
+                            <input type="tel" id="phone" required pattern="[0-9]{10}" placeholder="06XX XX XX XX" class="w-full p-3.5 pr-10 rounded-xl border border-gray-300 focus:border-wood-600 focus:outline-none bg-white text-sm dir-ltr text-right" style="direction: ltr; text-align: right; unicode-bidi: plaintext;">
                             <i class="fa-solid fa-phone absolute right-3.5 top-4 text-gray-400"></i>
                         </div>
                     </div>
@@ -356,7 +355,7 @@
 
             <!-- قسم تتبع الطلب -->
             <div id="tracking-container" class="hidden bg-white rounded-3xl p-6 sm:p-8 border-2 border-wood-200 shadow-xl space-y-6">
-               <div class="text-center space-y-2 border-b pb-6">
+                <div class="text-center space-y-2 border-b pb-6">
                     <div class="w-14 h-14 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto text-2xl">
                         <i class="fa-solid fa-circle-check"></i>
                     </div>
